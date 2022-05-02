@@ -1,0 +1,8 @@
+/home/ross/CLionProjects/fir1/deepNeuronalFilter/CMakeFiles/install/strip.dir
+/home/ross/CLionProjects/fir1/deepNeuronalFilter/CMakeFiles/install/local.dir
+/home/ross/CLionProjects/fir1/deepNeuronalFilter/CMakeFiles/install.dir
+/home/ross/CLionProjects/fir1/deepNeuronalFilter/CMakeFiles/list_install_components.dir
+/home/ross/CLionProjects/fir1/deepNeuronalFilter/CMakeFiles/rebuild_cache.dir
+/home/ross/CLionProjects/fir1/deepNeuronalFilter/CMakeFiles/edit_cache.dir
+/home/ross/CLionProjects/fir1/deepNeuronalFilter/CMakeFiles/test.dir
+/home/ross/CLionProjects/fir1/deepNeuronalFilter/CMakeFiles/dnf.dir

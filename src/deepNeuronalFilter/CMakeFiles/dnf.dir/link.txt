@@ -1,0 +1,2 @@
+/usr/bin/ar qc libdnf.a  CMakeFiles/dnf.dir/dnf/Layer.cpp.o CMakeFiles/dnf.dir/dnf/Net.cpp.o CMakeFiles/dnf.dir/dnf/Neuron.cpp.o
+/usr/bin/ranlib libdnf.a
