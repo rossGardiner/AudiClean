@@ -4,8 +4,8 @@
 
 #include "FilterInputSignal.h"
 
-void FilterInputSignal::RegisterCallback(FirFilter* filterCallback){
-    filterCallback = filterCallback;
+void FilterInputSignal::RegisterCallback(FirFilter* _filterCallback){
+    filterCallback = _filterCallback;
 }
 
 void FilterInputSignal::NextSample(double sample){

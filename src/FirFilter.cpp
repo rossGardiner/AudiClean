@@ -1,5 +1,4 @@
 #include "FirFilter.h"
-#include "BlockingQueue.cpp"
 
 FirFilter::FirFilter(int nrTaps, double lrate) {
     nrTaps = nrTaps;
@@ -22,7 +21,12 @@ void FirFilter::Start() {
 }
 
 void FirFilter::Stop(){
+    //set isOn to false
     isOn = false;
+    //add dummy samples to exit run loop
+    noiseSamples.Push(0.0);
+    signalSamples.Push(0.0);
+    //join thread
     worker.join();
 }
 
@@ -37,6 +41,7 @@ void FirFilter::SetOn(bool state) {
 void FirFilter::NextSignalSample(double sample){
     signalSamples.Push(sample);
 }
+
 void FirFilter::NextNoiseSample(double noise){
     noiseSamples.Push(noise);
 }

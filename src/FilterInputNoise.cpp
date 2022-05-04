@@ -4,8 +4,8 @@
 
 #include "FilterInputNoise.h"
 
-void FilterInputNoise::RegisterCallback(FirFilter* filterCallback){
-    filterCallback = filterCallback;
+void FilterInputNoise::RegisterCallback(FirFilter* _filterCallback){
+    filterCallback = _filterCallback;
 }
 
 void FilterInputNoise::NextSample(double sample){

@@ -49,7 +49,6 @@ void WavReader::Run() {
             ss >> t >> s;
             sampleCallback->NextSample(s);
         }
-        Stop();
     }
 }
 

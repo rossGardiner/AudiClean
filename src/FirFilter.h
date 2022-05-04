@@ -11,6 +11,7 @@
 
 #include "SampleLink.h"
 #include "BlockingQueue.h"
+#include "BlockingQueue.cpp"
 
 class FirFilter: public SampleLink{
 public:
@@ -23,9 +24,10 @@ public:
     void NextNoiseSample(double noise);
     void SetOn(bool state);
     bool GetOn();
-    
-    
-protected:
+        
+        
+        
+        protected:
     BlockingQueue<double> signalSamples;
     BlockingQueue<double> noiseSamples;
     double lrate = 0.0;
