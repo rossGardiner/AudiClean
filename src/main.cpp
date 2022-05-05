@@ -17,7 +17,7 @@ int main(int argc, char ** argv) {
     int rates[3] = {0,0,0}, nchans[3] = {0,0,0};
     int pcnt = 0;
 
-    for(i = 0; i < argc; i++) {
+    for(i = 1; i < argc; i++) {
         if(argv[i][0] != '-') {
 	    if(pcnt > 2) goto error;
 	    paths[pcnt++] = argv[i];
