@@ -7,7 +7,7 @@ add_subdirectory(deepNeuronalFilter)
 
 include_directories(deepNeuronalFilter)
 
-add_executable(AudiClean main.cpp SampleLink.cpp WavReader.cpp FirLMS.cpp FirFilter.cpp FilterInputNoise.cpp FilterInputSignal.cpp FilterInputNoise.cpp Fir1.cpp  )
+add_executable(AudiClean main.cpp SampleLink.cpp WavReader.cpp FirLMS.cpp FirFilter.cpp FilterInputNoise.cpp FilterInputSignal.cpp FilterInputNoise.cpp Fir1.cpp SoxEndpoint.cpp )
 target_link_libraries(AudiClean Threads::Threads)
 
 add_library(WavReader WavReader.cpp WavReader.h)

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 
+#include "SoxEndpoint.h"
 #include "WavReader.h"
 #include "FirLMS.h"
 #include "FilterInputSignal.h"
@@ -179,7 +180,9 @@ int main(int argc, char ** argv) {
     sigin.RegisterCallback(&filt);
     noisein.RegisterCallback(&filt);
     
-    SampleLink endpoint;
+    SoxEndpoint endpoint;
+    endpoint.Open(rates[2], nchans[2], globalopts, fileopts[2], paths[2], effectopts);
+
     filt.RegisterCallback(&endpoint);
     filt.Start();
     
@@ -189,6 +192,7 @@ int main(int argc, char ** argv) {
     filt.Stop();
     sigReader.Stop();
     noiReader.Stop();
+    endpoint.Close();
     return 0;
 }
 
