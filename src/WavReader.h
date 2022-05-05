@@ -10,8 +10,8 @@
 
 class WavReader : public SampleLink{
 public:
-    bool Open(std::string filename);
-    void Start(std::string filename);
+    bool Open(int rate, int nchans, std::string globalopts, std::string fileopts, std::string filename);
+    void Start(int rate, int nchans, std::string globalopts, std::string fileopts, std::string filename);
     void Stop();
     void Run();
     int GetNumChannels();
