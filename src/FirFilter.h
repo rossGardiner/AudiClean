@@ -17,7 +17,7 @@ class FirFilter: public SampleLink{
 public:
     FirFilter(int nrTaps, double lrate);
     void RunFilter();
-    void Start();
+    std::thread * Start();
     void Stop();
     virtual double Filter(double dirtySample, double noiseSample) = 0;
     void NextSignalSample(double sample);

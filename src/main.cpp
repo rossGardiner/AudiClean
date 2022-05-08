@@ -16,12 +16,14 @@ int main(int argc, char ** argv) {
     char *paths[3];
     int rates[3] = {0,0,0}, nchans[3] = {0,0,0};
     int pcnt = 0;
+    std::thread * threads[3];
 
     for(i = 1; i < argc; i++) {
         if(argv[i][0] != '-') {
 	    if(pcnt > 2) goto error;
 	    paths[pcnt++] = argv[i];
 	} else switch(argv[i][1]) {
+	    case '\0':
 	    case 'p':
             case 'd':
             case 'n':
@@ -163,8 +165,14 @@ int main(int argc, char ** argv) {
   	fprintf(stderr, "Unrecognised argument\n");
         return 1;
     }
-
-
+   
+    if(!rates[0]) rates[0] = get_wav_attr("r", paths[0]);
+    if(!rates[1]) rates[1] = rates[0];
+    if(!rates[2]) rates[2] = rates[0];
+    if(!nchans[0]) nchans[0] = get_wav_attr("c", paths[0]);
+    if(!nchans[1]) nchans[1] = nchans[0];
+    if(!nchans[2]) nchans[2] = nchans[0];
+    
 
     WavReader sigReader;
     WavReader noiReader;
@@ -176,19 +184,22 @@ int main(int argc, char ** argv) {
     FirLMS filt(50, 0.001);
     
     sigReader.RegisterCallback(&sigin);
-    noiReader.RegisterCallback(&noiReader);
+    noiReader.RegisterCallback(&noisein);
     sigin.RegisterCallback(&filt);
     noisein.RegisterCallback(&filt);
     
     SoxEndpoint endpoint;
-    endpoint.Open(rates[2], nchans[2], globalopts, fileopts[2], paths[2], effectopts);
+    /* N.B. not a typo -- should indeed be rates[0] despite others being indexed [2] */
+    endpoint.Open(rates[0], nchans[2], globalopts, fileopts[2], paths[2], effectopts);
 
     filt.RegisterCallback(&endpoint);
-    filt.Start();
+    threads[2] = filt.Start();
     
-    sigReader.Start(rates[0], nchans[0], globalopts, fileopts[0], paths[0]);
-    noiReader.Start(rates[1], nchans[1], globalopts, fileopts[1], paths[1]);
+    threads[0] = sigReader.Start(rates[0], nchans[0], globalopts, fileopts[0], paths[0]);
+    threads[1] = noiReader.Start(rates[1], nchans[1], globalopts, fileopts[1], paths[1]);
     
+    for(i = 0; i < 3; i++) if(threads[i]) threads[i]->join();
+
     filt.Stop();
     sigReader.Stop();
     noiReader.Stop();

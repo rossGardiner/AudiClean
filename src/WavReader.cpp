@@ -5,12 +5,13 @@
 
 
 
-void WavReader::Start(int rate, int nchan, std::string globalopts, std::string fileopts, std::string filename){
-    Open(rate, nchan, globalopts, fileopts, filename);
+std::thread * WavReader::Start(int rate, int nchan, std::string globalopts, std::string fileopts, std::string filename){
+    if(!Open(rate, nchan, globalopts, fileopts, filename)) return nullptr;
     workerThread = std::thread(&WavReader::Run, this);
+    return &workerThread;
 }
 
-static int get_attr(std::string attr, std::string filename) {
+int get_wav_attr(std::string attr, std::string filename) {
     FILE* pipe;
     static int constexpr bufmax {64};
     char rdbuf[bufmax];
@@ -27,8 +28,8 @@ static int get_attr(std::string attr, std::string filename) {
 }
 
 bool WavReader::Open(int rate, int nchan, std::string globalopts, std::string fileopts, std::string filename) {
-    sampleRate = rate ?: get_attr("r", filename);
-    nrChannels = nchan ?: get_attr("c", filename);
+    sampleRate = rate ?: get_wav_attr("r", filename);
+    nrChannels = nchan ?: get_wav_attr("c", filename);
     if(!sampleRate || !nrChannels) return false;
     std::string cmd("sox " + globalopts + fileopts + "'" + filename + "' -t dat -c " + std::to_string(nrChannels) + " -");
     pipe = popen(cmd.c_str(), "r");

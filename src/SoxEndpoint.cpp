@@ -2,8 +2,8 @@
 
 #include <string>
 
-bool SoxEndpoint::Open(int rate, int nchan, std::string globalopts, std::string fileopts, std::string filename, std::string effectopts) {
-    std::string cmd("sox " + globalopts + "-t f8 -c " + std::to_string(nchan) + "- " + fileopts + "'" + filename + "' " + effectopts);
+bool SoxEndpoint::Open(int srate, int nchan, std::string globalopts, std::string fileopts, std::string filename, std::string effectopts) {
+    std::string cmd("sox " + globalopts + "-t f8 -c " + std::to_string(nchan) + " -r " + std::to_string(srate) + " - " + fileopts + "'" + filename + "' " + effectopts);
     pipe = popen(cmd.c_str(), "r");
     return (pipe != nullptr);
 }

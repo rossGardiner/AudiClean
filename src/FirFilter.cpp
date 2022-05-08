@@ -16,8 +16,9 @@ void FirFilter::RunFilter() {
     }
 }
 
-void FirFilter::Start() {
+std::thread * FirFilter::Start() {
     worker = std::thread(&FirFilter::RunFilter, this);
+    return &worker;
 }
 
 void FirFilter::Stop(){

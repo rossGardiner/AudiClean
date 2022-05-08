@@ -11,7 +11,7 @@
 class WavReader : public SampleLink{
 public:
     bool Open(int rate, int nchans, std::string globalopts, std::string fileopts, std::string filename);
-    void Start(int rate, int nchans, std::string globalopts, std::string fileopts, std::string filename);
+    std::thread * Start(int rate, int nchans, std::string globalopts, std::string fileopts, std::string filename);
     void Stop();
     void Run();
     int GetNumChannels();
@@ -29,5 +29,6 @@ private:
     char rdbuf[bufmax];
 };
 
+extern int get_wav_attr(std::string attr, std::string filename);
 
 #endif //AUDICLEAN_WAVREADER_H
