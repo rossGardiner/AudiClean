@@ -4,6 +4,7 @@
 #include "SoxEndpoint.h"
 #include "WavReader.h"
 #include "FirLMS.h"
+#include "FirDNF.h"
 #include "FilterInputSignal.h"
 #include "FilterInputNoise.h"
 
@@ -180,7 +181,8 @@ int main(int argc, char ** argv) {
     
     FilterInputSignal sigin;
     FilterInputNoise noisein;
-    FirLMS filt(100, 0.001);
+    //FirLMS filt(100, 0.001);
+    FirDNF filt(100, 0.001, rates[0]);
     
     sigReader.RegisterCallback(&sigin);
     noiReader.RegisterCallback(&noisein);
