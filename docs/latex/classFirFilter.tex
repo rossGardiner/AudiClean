@@ -1,0 +1,170 @@
+\hypertarget{classFirFilter}{}\doxysection{Fir\+Filter Class Reference}
+\label{classFirFilter}\index{FirFilter@{FirFilter}}
+
+
+{\ttfamily \#include $<$Fir\+Filter.\+h$>$}
+
+
+
+Inheritance diagram for Fir\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classFirFilter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Fir\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classFirFilter__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFirFilter_af96a9edb3b1067786e7d8718f2b4dd02}{Fir\+Filter}} (int \mbox{\hyperlink{classFirFilter_aea8cf8635a357d7f5b17cea0018c1de3}{nr\+Taps}}, double \mbox{\hyperlink{classFirFilter_ac340352a08c2200f556283a355bac549}{lrate}})
+\item 
+void \mbox{\hyperlink{classFirFilter_a4f87328e2db9f12c0480b10dc7ae82b8}{Run\+Filter}} ()
+\item 
+std\+::thread $\ast$ \mbox{\hyperlink{classFirFilter_a562de4dfff000622bf49e2697e51f6eb}{Start}} ()
+\item 
+void \mbox{\hyperlink{classFirFilter_af8034efbe682d79bbb13242118d446b8}{Stop}} ()
+\item 
+virtual double \mbox{\hyperlink{classFirFilter_ac0f38bdcde5d287460bf77eddbb1a3e0}{Filter}} (double dirty\+Sample, double noise\+Sample)=0
+\item 
+void \mbox{\hyperlink{classFirFilter_a3768318fbe5f70ccb288a929bd71c7c5}{Next\+Signal\+Sample}} (double sample)
+\item 
+void \mbox{\hyperlink{classFirFilter_adfac0d73471bc542b880d79fa79dc7c8}{Next\+Noise\+Sample}} (double noise)
+\item 
+void \mbox{\hyperlink{classFirFilter_a7683d4d00be8e1e4845ce2dca8b7b194}{Set\+On}} (bool state)
+\item 
+bool \mbox{\hyperlink{classFirFilter_a8d5e6714e15cfb5d634b16d3dda39ac6}{Get\+On}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}$<$ double $>$ \mbox{\hyperlink{classFirFilter_a73831e75cacba53524a03ae7b33c58d7}{signal\+Samples}}
+\item 
+\mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}$<$ double $>$ \mbox{\hyperlink{classFirFilter_add24e38d652ffa53832b5bdbb451b739}{noise\+Samples}}
+\item 
+double \mbox{\hyperlink{classFirFilter_ac340352a08c2200f556283a355bac549}{lrate}} = 0.\+0
+\item 
+int \mbox{\hyperlink{classFirFilter_aea8cf8635a357d7f5b17cea0018c1de3}{nr\+Taps}} = 0
+\item 
+std\+::thread \mbox{\hyperlink{classFirFilter_a5a5395c1d4ea595975b9cc32c8027a5b}{worker}}
+\item 
+bool \mbox{\hyperlink{classFirFilter_a4b81a2004ce00398c4034c383c0ad5ce}{is\+On}} = true
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFirFilter_af96a9edb3b1067786e7d8718f2b4dd02}\label{classFirFilter_af96a9edb3b1067786e7d8718f2b4dd02}} 
+\index{FirFilter@{FirFilter}!FirFilter@{FirFilter}}
+\index{FirFilter@{FirFilter}!FirFilter@{FirFilter}}
+\doxysubsubsection{\texorpdfstring{FirFilter()}{FirFilter()}}
+{\footnotesize\ttfamily Fir\+Filter\+::\+Fir\+Filter (\begin{DoxyParamCaption}\item[{int}]{nr\+Taps,  }\item[{double}]{lrate }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFirFilter_ac0f38bdcde5d287460bf77eddbb1a3e0}\label{classFirFilter_ac0f38bdcde5d287460bf77eddbb1a3e0}} 
+\index{FirFilter@{FirFilter}!Filter@{Filter}}
+\index{Filter@{Filter}!FirFilter@{FirFilter}}
+\doxysubsubsection{\texorpdfstring{Filter()}{Filter()}}
+{\footnotesize\ttfamily virtual double Fir\+Filter\+::\+Filter (\begin{DoxyParamCaption}\item[{double}]{dirty\+Sample,  }\item[{double}]{noise\+Sample }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classFirDNF_a037c90a6c16c229aec469087e8e90db6}{Fir\+D\+NF}}, and \mbox{\hyperlink{classFirLMS_acfb24070a8a6ed38ddef073c2ec64304}{Fir\+L\+MS}}.
+
+\mbox{\Hypertarget{classFirFilter_a8d5e6714e15cfb5d634b16d3dda39ac6}\label{classFirFilter_a8d5e6714e15cfb5d634b16d3dda39ac6}} 
+\index{FirFilter@{FirFilter}!GetOn@{GetOn}}
+\index{GetOn@{GetOn}!FirFilter@{FirFilter}}
+\doxysubsubsection{\texorpdfstring{GetOn()}{GetOn()}}
+{\footnotesize\ttfamily bool Fir\+Filter\+::\+Get\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classFirFilter_adfac0d73471bc542b880d79fa79dc7c8}\label{classFirFilter_adfac0d73471bc542b880d79fa79dc7c8}} 
+\index{FirFilter@{FirFilter}!NextNoiseSample@{NextNoiseSample}}
+\index{NextNoiseSample@{NextNoiseSample}!FirFilter@{FirFilter}}
+\doxysubsubsection{\texorpdfstring{NextNoiseSample()}{NextNoiseSample()}}
+{\footnotesize\ttfamily void Fir\+Filter\+::\+Next\+Noise\+Sample (\begin{DoxyParamCaption}\item[{double}]{noise }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classFirFilter_a3768318fbe5f70ccb288a929bd71c7c5}\label{classFirFilter_a3768318fbe5f70ccb288a929bd71c7c5}} 
+\index{FirFilter@{FirFilter}!NextSignalSample@{NextSignalSample}}
+\index{NextSignalSample@{NextSignalSample}!FirFilter@{FirFilter}}
+\doxysubsubsection{\texorpdfstring{NextSignalSample()}{NextSignalSample()}}
+{\footnotesize\ttfamily void Fir\+Filter\+::\+Next\+Signal\+Sample (\begin{DoxyParamCaption}\item[{double}]{sample }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classFirFilter_a4f87328e2db9f12c0480b10dc7ae82b8}\label{classFirFilter_a4f87328e2db9f12c0480b10dc7ae82b8}} 
+\index{FirFilter@{FirFilter}!RunFilter@{RunFilter}}
+\index{RunFilter@{RunFilter}!FirFilter@{FirFilter}}
+\doxysubsubsection{\texorpdfstring{RunFilter()}{RunFilter()}}
+{\footnotesize\ttfamily void Fir\+Filter\+::\+Run\+Filter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classFirFilter_a7683d4d00be8e1e4845ce2dca8b7b194}\label{classFirFilter_a7683d4d00be8e1e4845ce2dca8b7b194}} 
+\index{FirFilter@{FirFilter}!SetOn@{SetOn}}
+\index{SetOn@{SetOn}!FirFilter@{FirFilter}}
+\doxysubsubsection{\texorpdfstring{SetOn()}{SetOn()}}
+{\footnotesize\ttfamily void Fir\+Filter\+::\+Set\+On (\begin{DoxyParamCaption}\item[{bool}]{state }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classFirFilter_a562de4dfff000622bf49e2697e51f6eb}\label{classFirFilter_a562de4dfff000622bf49e2697e51f6eb}} 
+\index{FirFilter@{FirFilter}!Start@{Start}}
+\index{Start@{Start}!FirFilter@{FirFilter}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily std\+::thread $\ast$ Fir\+Filter\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classFirFilter_af8034efbe682d79bbb13242118d446b8}\label{classFirFilter_af8034efbe682d79bbb13242118d446b8}} 
+\index{FirFilter@{FirFilter}!Stop@{Stop}}
+\index{Stop@{Stop}!FirFilter@{FirFilter}}
+\doxysubsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily void Fir\+Filter\+::\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classFirFilter_a4b81a2004ce00398c4034c383c0ad5ce}\label{classFirFilter_a4b81a2004ce00398c4034c383c0ad5ce}} 
+\index{FirFilter@{FirFilter}!isOn@{isOn}}
+\index{isOn@{isOn}!FirFilter@{FirFilter}}
+\doxysubsubsection{\texorpdfstring{isOn}{isOn}}
+{\footnotesize\ttfamily bool Fir\+Filter\+::is\+On = true\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classFirFilter_ac340352a08c2200f556283a355bac549}\label{classFirFilter_ac340352a08c2200f556283a355bac549}} 
+\index{FirFilter@{FirFilter}!lrate@{lrate}}
+\index{lrate@{lrate}!FirFilter@{FirFilter}}
+\doxysubsubsection{\texorpdfstring{lrate}{lrate}}
+{\footnotesize\ttfamily double Fir\+Filter\+::lrate = 0.\+0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classFirFilter_add24e38d652ffa53832b5bdbb451b739}\label{classFirFilter_add24e38d652ffa53832b5bdbb451b739}} 
+\index{FirFilter@{FirFilter}!noiseSamples@{noiseSamples}}
+\index{noiseSamples@{noiseSamples}!FirFilter@{FirFilter}}
+\doxysubsubsection{\texorpdfstring{noiseSamples}{noiseSamples}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}$<$double$>$ Fir\+Filter\+::noise\+Samples\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classFirFilter_aea8cf8635a357d7f5b17cea0018c1de3}\label{classFirFilter_aea8cf8635a357d7f5b17cea0018c1de3}} 
+\index{FirFilter@{FirFilter}!nrTaps@{nrTaps}}
+\index{nrTaps@{nrTaps}!FirFilter@{FirFilter}}
+\doxysubsubsection{\texorpdfstring{nrTaps}{nrTaps}}
+{\footnotesize\ttfamily int Fir\+Filter\+::nr\+Taps = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classFirFilter_a73831e75cacba53524a03ae7b33c58d7}\label{classFirFilter_a73831e75cacba53524a03ae7b33c58d7}} 
+\index{FirFilter@{FirFilter}!signalSamples@{signalSamples}}
+\index{signalSamples@{signalSamples}!FirFilter@{FirFilter}}
+\doxysubsubsection{\texorpdfstring{signalSamples}{signalSamples}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}$<$double$>$ Fir\+Filter\+::signal\+Samples\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classFirFilter_a5a5395c1d4ea595975b9cc32c8027a5b}\label{classFirFilter_a5a5395c1d4ea595975b9cc32c8027a5b}} 
+\index{FirFilter@{FirFilter}!worker@{worker}}
+\index{worker@{worker}!FirFilter@{FirFilter}}
+\doxysubsubsection{\texorpdfstring{worker}{worker}}
+{\footnotesize\ttfamily std\+::thread Fir\+Filter\+::worker\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{FirFilter_8h}{Fir\+Filter.\+h}}\item 
+src/\mbox{\hyperlink{FirFilter_8cpp}{Fir\+Filter.\+cpp}}\end{DoxyCompactItemize}

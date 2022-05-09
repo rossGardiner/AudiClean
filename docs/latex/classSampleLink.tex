@@ -1,0 +1,87 @@
+\hypertarget{classSampleLink}{}\doxysection{Sample\+Link Class Reference}
+\label{classSampleLink}\index{SampleLink@{SampleLink}}
+
+
+{\ttfamily \#include $<$Sample\+Link.\+h$>$}
+
+
+
+Inheritance diagram for Sample\+Link\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSampleLink__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Sample\+Link\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classSampleLink__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSampleLink_aed77c94ac60ada5ef05ead67846654f6}{Register\+Callback}} (\mbox{\hyperlink{classSampleCallback}{Sample\+Callback}} $\ast$scb)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSampleLink_acc6965bae01241d2e2a61ad81501b828}{Next\+Sample}} (double next)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSampleCallback}{Sample\+Callback}} $\ast$ \mbox{\hyperlink{classSampleLink_aab5e41ba515a75d2cab815e3ceeb5e37}{sample\+Callback}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Extends \mbox{\hyperlink{classSampleCallback}{Sample\+Callback}} to include facility to register a futher callback. Forms a pipeline element with an input and output. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSampleLink_acc6965bae01241d2e2a61ad81501b828}\label{classSampleLink_acc6965bae01241d2e2a61ad81501b828}} 
+\index{SampleLink@{SampleLink}!NextSample@{NextSample}}
+\index{NextSample@{NextSample}!SampleLink@{SampleLink}}
+\doxysubsubsection{\texorpdfstring{NextSample()}{NextSample()}}
+{\footnotesize\ttfamily void Sample\+Link\+::\+Next\+Sample (\begin{DoxyParamCaption}\item[{double}]{sample }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+Default implementation of Next\+Sample. Pass the sample to the next callback, return if no callback is set yet. 
+\begin{DoxyParams}{Parameters}
+{\em sample} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classSampleCallback_aab0827e638e5dba214cebb90e3eb9fa1}{Sample\+Callback}}.
+
+\mbox{\Hypertarget{classSampleLink_aed77c94ac60ada5ef05ead67846654f6}\label{classSampleLink_aed77c94ac60ada5ef05ead67846654f6}} 
+\index{SampleLink@{SampleLink}!RegisterCallback@{RegisterCallback}}
+\index{RegisterCallback@{RegisterCallback}!SampleLink@{SampleLink}}
+\doxysubsubsection{\texorpdfstring{RegisterCallback()}{RegisterCallback()}}
+{\footnotesize\ttfamily void Sample\+Link\+::\+Register\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSampleCallback}{Sample\+Callback}} $\ast$}]{scb }\end{DoxyParamCaption})}
+
+Register the callback for the next object in the pipeline. 
+\begin{DoxyParams}{Parameters}
+{\em scb} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSampleLink_aab5e41ba515a75d2cab815e3ceeb5e37}\label{classSampleLink_aab5e41ba515a75d2cab815e3ceeb5e37}} 
+\index{SampleLink@{SampleLink}!sampleCallback@{sampleCallback}}
+\index{sampleCallback@{sampleCallback}!SampleLink@{SampleLink}}
+\doxysubsubsection{\texorpdfstring{sampleCallback}{sampleCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSampleCallback}{Sample\+Callback}}$\ast$ Sample\+Link\+::sample\+Callback = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{SampleLink_8h}{Sample\+Link.\+h}}\item 
+src/\mbox{\hyperlink{SampleLink_8cpp}{Sample\+Link.\+cpp}}\end{DoxyCompactItemize}

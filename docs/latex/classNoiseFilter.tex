@@ -1,0 +1,148 @@
+\hypertarget{classNoiseFilter}{}\doxysection{Noise\+Filter Class Reference}
+\label{classNoiseFilter}\index{NoiseFilter@{NoiseFilter}}
+
+
+{\ttfamily \#include $<$Noise\+Filter.\+h$>$}
+
+
+
+Inheritance diagram for Noise\+Filter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classNoiseFilter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Noise\+Filter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classNoiseFilter__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classNoiseFilter_a07193360e2df02a1387726bb66660d52}{Run\+Filter}} ()
+\item 
+std\+::thread $\ast$ \mbox{\hyperlink{classNoiseFilter_a73ba8fe000fa4d7caa156c5603d27b66}{Start}} ()
+\item 
+void \mbox{\hyperlink{classNoiseFilter_a507d1a606563fdd245ec93310842518a}{Stop}} ()
+\item 
+virtual double \mbox{\hyperlink{classNoiseFilter_af7eb0fd8ea4b9656379cdffa8d170ad7}{Filter}} (double dirty\+Sample, double noise\+Sample)=0
+\item 
+void \mbox{\hyperlink{classNoiseFilter_adbee2f092917f823aa438e426f2b6413}{Next\+Signal\+Sample}} (double sample)
+\item 
+void \mbox{\hyperlink{classNoiseFilter_a2d00a5a793f6d6df21a9000b690a53ae}{Next\+Noise\+Sample}} (double noise)
+\item 
+void \mbox{\hyperlink{classNoiseFilter_a155394b14332750e2bd5abac9e0200d6}{Set\+On}} (bool state)
+\item 
+bool \mbox{\hyperlink{classNoiseFilter_a30028d84d9a2c1ca306347e2e2516904}{Get\+On}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}$<$ double $>$ \mbox{\hyperlink{classNoiseFilter_a7dc53f5a491a20e661c570f9981d24c2}{signal\+Samples}}
+\item 
+\mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}$<$ double $>$ \mbox{\hyperlink{classNoiseFilter_ab501f5e3ed6b06da2d16a7cd49d33c69}{noise\+Samples}}
+\item 
+std\+::thread \mbox{\hyperlink{classNoiseFilter_a6053bfdee3d31133ced971054854b458}{worker}}
+\item 
+bool \mbox{\hyperlink{classNoiseFilter_ad36e30274a4d8f23660e18066f6655e2}{is\+On}} = true
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A pipeline element to derive real-\/time noise removal filters from. Inherits \mbox{\hyperlink{classSampleLink}{Sample\+Link}}. Derived Classes must implement the pure abstract \mbox{\hyperlink{classNoiseFilter_af7eb0fd8ea4b9656379cdffa8d170ad7}{Filter()}} function. Noise and dirty samples are synchronised by making use of two instances of \mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}. A worker thread loads each samples pair and performs the filtering per-\/sample. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classNoiseFilter_af7eb0fd8ea4b9656379cdffa8d170ad7}\label{classNoiseFilter_af7eb0fd8ea4b9656379cdffa8d170ad7}} 
+\index{NoiseFilter@{NoiseFilter}!Filter@{Filter}}
+\index{Filter@{Filter}!NoiseFilter@{NoiseFilter}}
+\doxysubsubsection{\texorpdfstring{Filter()}{Filter()}}
+{\footnotesize\ttfamily virtual double Noise\+Filter\+::\+Filter (\begin{DoxyParamCaption}\item[{double}]{dirty\+Sample,  }\item[{double}]{noise\+Sample }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classFirDNF_a037c90a6c16c229aec469087e8e90db6}{Fir\+D\+NF}}, and \mbox{\hyperlink{classFirLMS_acfb24070a8a6ed38ddef073c2ec64304}{Fir\+L\+MS}}.
+
+\mbox{\Hypertarget{classNoiseFilter_a30028d84d9a2c1ca306347e2e2516904}\label{classNoiseFilter_a30028d84d9a2c1ca306347e2e2516904}} 
+\index{NoiseFilter@{NoiseFilter}!GetOn@{GetOn}}
+\index{GetOn@{GetOn}!NoiseFilter@{NoiseFilter}}
+\doxysubsubsection{\texorpdfstring{GetOn()}{GetOn()}}
+{\footnotesize\ttfamily bool Noise\+Filter\+::\+Get\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classNoiseFilter_a2d00a5a793f6d6df21a9000b690a53ae}\label{classNoiseFilter_a2d00a5a793f6d6df21a9000b690a53ae}} 
+\index{NoiseFilter@{NoiseFilter}!NextNoiseSample@{NextNoiseSample}}
+\index{NextNoiseSample@{NextNoiseSample}!NoiseFilter@{NoiseFilter}}
+\doxysubsubsection{\texorpdfstring{NextNoiseSample()}{NextNoiseSample()}}
+{\footnotesize\ttfamily void Noise\+Filter\+::\+Next\+Noise\+Sample (\begin{DoxyParamCaption}\item[{double}]{noise }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classNoiseFilter_adbee2f092917f823aa438e426f2b6413}\label{classNoiseFilter_adbee2f092917f823aa438e426f2b6413}} 
+\index{NoiseFilter@{NoiseFilter}!NextSignalSample@{NextSignalSample}}
+\index{NextSignalSample@{NextSignalSample}!NoiseFilter@{NoiseFilter}}
+\doxysubsubsection{\texorpdfstring{NextSignalSample()}{NextSignalSample()}}
+{\footnotesize\ttfamily void Noise\+Filter\+::\+Next\+Signal\+Sample (\begin{DoxyParamCaption}\item[{double}]{sample }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classNoiseFilter_a07193360e2df02a1387726bb66660d52}\label{classNoiseFilter_a07193360e2df02a1387726bb66660d52}} 
+\index{NoiseFilter@{NoiseFilter}!RunFilter@{RunFilter}}
+\index{RunFilter@{RunFilter}!NoiseFilter@{NoiseFilter}}
+\doxysubsubsection{\texorpdfstring{RunFilter()}{RunFilter()}}
+{\footnotesize\ttfamily void Noise\+Filter\+::\+Run\+Filter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classNoiseFilter_a155394b14332750e2bd5abac9e0200d6}\label{classNoiseFilter_a155394b14332750e2bd5abac9e0200d6}} 
+\index{NoiseFilter@{NoiseFilter}!SetOn@{SetOn}}
+\index{SetOn@{SetOn}!NoiseFilter@{NoiseFilter}}
+\doxysubsubsection{\texorpdfstring{SetOn()}{SetOn()}}
+{\footnotesize\ttfamily void Noise\+Filter\+::\+Set\+On (\begin{DoxyParamCaption}\item[{bool}]{state }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classNoiseFilter_a73ba8fe000fa4d7caa156c5603d27b66}\label{classNoiseFilter_a73ba8fe000fa4d7caa156c5603d27b66}} 
+\index{NoiseFilter@{NoiseFilter}!Start@{Start}}
+\index{Start@{Start}!NoiseFilter@{NoiseFilter}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily std\+::thread $\ast$ Noise\+Filter\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classNoiseFilter_a507d1a606563fdd245ec93310842518a}\label{classNoiseFilter_a507d1a606563fdd245ec93310842518a}} 
+\index{NoiseFilter@{NoiseFilter}!Stop@{Stop}}
+\index{Stop@{Stop}!NoiseFilter@{NoiseFilter}}
+\doxysubsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily void Noise\+Filter\+::\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classNoiseFilter_ad36e30274a4d8f23660e18066f6655e2}\label{classNoiseFilter_ad36e30274a4d8f23660e18066f6655e2}} 
+\index{NoiseFilter@{NoiseFilter}!isOn@{isOn}}
+\index{isOn@{isOn}!NoiseFilter@{NoiseFilter}}
+\doxysubsubsection{\texorpdfstring{isOn}{isOn}}
+{\footnotesize\ttfamily bool Noise\+Filter\+::is\+On = true\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classNoiseFilter_ab501f5e3ed6b06da2d16a7cd49d33c69}\label{classNoiseFilter_ab501f5e3ed6b06da2d16a7cd49d33c69}} 
+\index{NoiseFilter@{NoiseFilter}!noiseSamples@{noiseSamples}}
+\index{noiseSamples@{noiseSamples}!NoiseFilter@{NoiseFilter}}
+\doxysubsubsection{\texorpdfstring{noiseSamples}{noiseSamples}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}$<$double$>$ Noise\+Filter\+::noise\+Samples\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classNoiseFilter_a7dc53f5a491a20e661c570f9981d24c2}\label{classNoiseFilter_a7dc53f5a491a20e661c570f9981d24c2}} 
+\index{NoiseFilter@{NoiseFilter}!signalSamples@{signalSamples}}
+\index{signalSamples@{signalSamples}!NoiseFilter@{NoiseFilter}}
+\doxysubsubsection{\texorpdfstring{signalSamples}{signalSamples}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}$<$double$>$ Noise\+Filter\+::signal\+Samples\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classNoiseFilter_a6053bfdee3d31133ced971054854b458}\label{classNoiseFilter_a6053bfdee3d31133ced971054854b458}} 
+\index{NoiseFilter@{NoiseFilter}!worker@{worker}}
+\index{worker@{worker}!NoiseFilter@{NoiseFilter}}
+\doxysubsubsection{\texorpdfstring{worker}{worker}}
+{\footnotesize\ttfamily std\+::thread Noise\+Filter\+::worker\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{NoiseFilter_8h}{Noise\+Filter.\+h}}\item 
+src/\mbox{\hyperlink{NoiseFilter_8cpp}{Noise\+Filter.\+cpp}}\end{DoxyCompactItemize}

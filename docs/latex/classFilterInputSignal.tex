@@ -1,0 +1,84 @@
+\hypertarget{classFilterInputSignal}{}\doxysection{Filter\+Input\+Signal Class Reference}
+\label{classFilterInputSignal}\index{FilterInputSignal@{FilterInputSignal}}
+
+
+{\ttfamily \#include $<$Filter\+Input\+Signal.\+h$>$}
+
+
+
+Inheritance diagram for Filter\+Input\+Signal\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{classFilterInputSignal__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Filter\+Input\+Signal\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFilterInputSignal__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classFilterInputSignal_a3f52d4845a1a93a9c0869257f1453468}{Register\+Callback}} (\mbox{\hyperlink{classNoiseFilter}{Noise\+Filter}} $\ast$\mbox{\hyperlink{classFilterInputSignal_a7e6e72dd71fa158248145b45a224e307}{filter\+Callback}})
+\item 
+void \mbox{\hyperlink{classFilterInputSignal_a26563840ee648d50698602b9a4d36f30}{Next\+Sample}} (double sample)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNoiseFilter}{Noise\+Filter}} $\ast$ \mbox{\hyperlink{classFilterInputSignal_a7e6e72dd71fa158248145b45a224e307}{filter\+Callback}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Inherits \mbox{\hyperlink{classSampleCallback}{Sample\+Callback}}, acts as an interface to the asynchonous signal input to a Noise\+Filer 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFilterInputSignal_a26563840ee648d50698602b9a4d36f30}\label{classFilterInputSignal_a26563840ee648d50698602b9a4d36f30}} 
+\index{FilterInputSignal@{FilterInputSignal}!NextSample@{NextSample}}
+\index{NextSample@{NextSample}!FilterInputSignal@{FilterInputSignal}}
+\doxysubsubsection{\texorpdfstring{NextSample()}{NextSample()}}
+{\footnotesize\ttfamily void Filter\+Input\+Signal\+::\+Next\+Sample (\begin{DoxyParamCaption}\item[{double}]{sample }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Processes the next signal sample. If a callback is registered, send the sample to the filter signal input 
+\begin{DoxyParams}{Parameters}
+{\em sample} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classSampleCallback_aab0827e638e5dba214cebb90e3eb9fa1}{Sample\+Callback}}.
+
+\mbox{\Hypertarget{classFilterInputSignal_a3f52d4845a1a93a9c0869257f1453468}\label{classFilterInputSignal_a3f52d4845a1a93a9c0869257f1453468}} 
+\index{FilterInputSignal@{FilterInputSignal}!RegisterCallback@{RegisterCallback}}
+\index{RegisterCallback@{RegisterCallback}!FilterInputSignal@{FilterInputSignal}}
+\doxysubsubsection{\texorpdfstring{RegisterCallback()}{RegisterCallback()}}
+{\footnotesize\ttfamily void Filter\+Input\+Signal\+::\+Register\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNoiseFilter}{Noise\+Filter}} $\ast$}]{\+\_\+filter\+Callback }\end{DoxyParamCaption})}
+
+Registers a \mbox{\hyperlink{classNoiseFilter}{Noise\+Filter}} to call-\/back with signal samples 
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+filter\+Callback} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classFilterInputSignal_a7e6e72dd71fa158248145b45a224e307}\label{classFilterInputSignal_a7e6e72dd71fa158248145b45a224e307}} 
+\index{FilterInputSignal@{FilterInputSignal}!filterCallback@{filterCallback}}
+\index{filterCallback@{filterCallback}!FilterInputSignal@{FilterInputSignal}}
+\doxysubsubsection{\texorpdfstring{filterCallback}{filterCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classNoiseFilter}{Noise\+Filter}}$\ast$ Filter\+Input\+Signal\+::filter\+Callback\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{FilterInputSignal_8h}{Filter\+Input\+Signal.\+h}}\item 
+src/\mbox{\hyperlink{FilterInputSignal_8cpp}{Filter\+Input\+Signal.\+cpp}}\end{DoxyCompactItemize}
