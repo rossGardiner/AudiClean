@@ -52,9 +52,13 @@ void WavReader::Run() {
         ss >> t >> s;
         sampleCallback->NextSample(s);
     }
+    if(pipe!= nullptr){
+        pclose(pipe);
+    }
+    printf("finished!\n");
 }
 
-void WavReader::Stop(){
+void WavReader::ForceStop(){
     SetOn(false);
     if(pipe != nullptr){
         pclose(pipe);

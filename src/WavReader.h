@@ -12,7 +12,7 @@ class WavReader : public SampleLink{
 public:
     bool Open(int rate, int nchans, std::string globalopts, std::string fileopts, std::string filename);
     std::thread * Start(int rate, int nchans, std::string globalopts, std::string fileopts, std::string filename);
-    void Stop();
+    void ForceStop();
     void Run();
     int GetNumChannels();
     int GetSampleRate();

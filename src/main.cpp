@@ -198,11 +198,12 @@ int main(int argc, char ** argv) {
     threads[0] = sigReader.Start(rates[0], nchans[0], globalopts, fileopts[0], paths[0]);
     threads[1] = noiReader.Start(rates[1], nchans[1], globalopts, fileopts[1], paths[1]);
     
-    for(i = 0; i < 3; i++) if(threads[i]) threads[i]->join();
-
+    for(i = 0; i < 2; i++) if(threads[i]) threads[i]->join();
+    
     filt.Stop();
-    sigReader.Stop();
-    noiReader.Stop();
+    
+    
+    
     //endpoint.Close();
     return 0;
 }

@@ -10,7 +10,6 @@ void FirFilter::RunFilter() {
         double signalSample = signalSamples.Pop();
         double noiseSample = noiseSamples.Pop();
         double filtered = Filter(signalSample, noiseSample);
-        //printf("sig: %f, noi: %f, filtered %f\n",signalSample, noiseSample, filtered );
         if(sampleCallback) {
             sampleCallback->NextSample(filtered);
         }
@@ -27,7 +26,6 @@ void FirFilter::Stop(){
     //add dummy samples to exit run loop
     noiseSamples.Push(0.0);
     signalSamples.Push(0.0);
-    //join thread
     worker.join();
 }
 
@@ -41,9 +39,12 @@ void FirFilter::SetOn(bool state) {
 
 void FirFilter::NextSignalSample(double sample){
     signalSamples.Push(sample);
+    //printf("sigsize: %d\n", signalSamples.Size());
 }
 
 void FirFilter::NextNoiseSample(double noise){
     noiseSamples.Push(noise);
+    //printf("noisize: %d\n", noiseSamples.Size());
+    
 }
 
