@@ -2,7 +2,7 @@
 #include <cstring>
 
 #include "SoxEndpoint.h"
-#include "WavReader.h"
+#include "SoxReader.h"
 #include "FirLMS.h"
 #include "FirDNF.h"
 #include "FilterInputSignal.h"
@@ -175,8 +175,8 @@ int main(int argc, char ** argv) {
     if(!nchans[2]) nchans[2] = nchans[0];
     
 
-    WavReader sigReader;
-    WavReader noiReader;
+    SoxReader sigReader;
+    SoxReader noiReader;
     
     
     FilterInputSignal sigin;

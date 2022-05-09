@@ -1,13 +1,13 @@
-#include "WavReader.h"
+#include "SoxReader.h"
 
 #include <string>
 #include <sstream>
 
 
 
-std::thread * WavReader::Start(int rate, int nchan, std::string globalopts, std::string fileopts, std::string filename){
+std::thread * SoxReader::Start(int rate, int nchan, std::string globalopts, std::string fileopts, std::string filename){
     if(!Open(rate, nchan, globalopts, fileopts, filename)) return nullptr;
-    workerThread = std::thread(&WavReader::Run, this);
+    workerThread = std::thread(&SoxReader::Run, this);
     return &workerThread;
 }
 
@@ -27,7 +27,7 @@ int get_wav_attr(std::string attr, std::string filename) {
     return ret;
 }
 
-bool WavReader::Open(int rate, int nchan, std::string globalopts, std::string fileopts, std::string filename) {
+bool SoxReader::Open(int rate, int nchan, std::string globalopts, std::string fileopts, std::string filename) {
     sampleRate = rate ?: get_wav_attr("r", filename);
     nrChannels = nchan ?: get_wav_attr("c", filename);
     if(!sampleRate || !nrChannels) return false;
@@ -39,11 +39,11 @@ bool WavReader::Open(int rate, int nchan, std::string globalopts, std::string fi
     return true;
 }
 
-void WavReader::SetOn(bool val) {
+void SoxReader::SetOn(bool val) {
     isOn = val;
 }
 
-void WavReader::Run() {
+void SoxReader::Run() {
     bool eof = false;
     eof = (fgets(rdbuf, bufmax, pipe) == nullptr);
     eof = (fgets(rdbuf, bufmax, pipe) == nullptr);
@@ -59,7 +59,7 @@ void WavReader::Run() {
     }
 }
 
-void WavReader::ForceStop(){
+void SoxReader::ForceStop(){
     SetOn(false);
     if(pipe != nullptr){
         pclose(pipe);
@@ -67,10 +67,10 @@ void WavReader::ForceStop(){
     workerThread.join();
 }
 
-int WavReader::GetNumChannels() {
+int SoxReader::GetNumChannels() {
     return nrChannels;
 }
 
-int WavReader::GetSampleRate() {
+int SoxReader::GetSampleRate() {
     return sampleRate;
 }

@@ -8,7 +8,7 @@
 #include "SampleLink.h"
 
 
-class WavReader : public SampleLink{
+class SoxReader : public SampleLink{
 public:
     bool Open(int rate, int nchans, std::string globalopts, std::string fileopts, std::string filename);
     std::thread * Start(int rate, int nchans, std::string globalopts, std::string fileopts, std::string filename);

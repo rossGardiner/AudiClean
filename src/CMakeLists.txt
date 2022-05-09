@@ -12,10 +12,9 @@ include_directories(deepNeuronalFilter)
 link_directories(deepNeuronalFilter)
 
 
-add_executable(AudiClean main.cpp SampleLink.cpp WavReader.cpp FirLMS.cpp FirDNF.cpp FirFilter.cpp FilterInputNoise.cpp FilterInputSignal.cpp FilterInputNoise.cpp Fir1.cpp SoxEndpoint.cpp )
+add_executable(AudiClean main.cpp SampleLink.cpp SoxReader.cpp FirLMS.cpp FirDNF.cpp FirFilter.cpp FilterInputNoise.cpp FilterInputSignal.cpp FilterInputNoise.cpp Fir1.cpp SoxEndpoint.cpp )
 target_link_libraries(AudiClean dnf Threads::Threads)
 target_include_directories(AudiClean PRIVATE deepNeuronalFilter)
 
-#add_library(WavReader WavReader.cpp WavReader.h)
-#target_link_libraries(WavReader Threads::Threads)
+
 
