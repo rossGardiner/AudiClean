@@ -24,8 +24,8 @@ std::thread * FirFilter::Start() {
 void FirFilter::Stop(){
     isOn = false;
     //add dummy samples to exit run loop
-    noiseSamples.Push(0.0);
-    signalSamples.Push(0.0);
+    if(signalSamples.Size() == 0) signalSamples.Push(0.0);
+    if(noiseSamples.Size() == 0) noiseSamples.Push(0.0);
     worker.join();
 }
 

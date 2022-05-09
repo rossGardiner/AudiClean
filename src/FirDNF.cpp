@@ -8,5 +8,6 @@ FirDNF::FirDNF(int nrTaps, double lrate, int sampleRate) : FirFilter(nrTaps, lra
 }
 
 double FirDNF::Filter(double dirtySample, double noiseSample) {
-    return 0.0;
+    double cancelled = internal_DNF->filter(dirtySample, noiseSample);
+    return cancelled;
 }
