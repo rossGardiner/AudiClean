@@ -5,7 +5,9 @@
 #include <boost/circular_buffer.hpp>
 #include "dnf.h"
 
-
+/*!
+ * A pipeline component which extends NoiseFilter as an FIR Deep Neuronal Filter
+ */
 class FirDNF : public NoiseFilter{
 public:
     FirDNF(int nrTaps, double lrate, int sampleRate);
