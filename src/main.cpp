@@ -187,10 +187,10 @@ int main(int argc, char ** argv) {
     sigin.RegisterCallback(&filt);
     noisein.RegisterCallback(&filt);
     
-    //SoxEndpoint endpoint;
-    SampleLink endpoint;
+    SoxEndpoint endpoint;
+    //SampleLink endpoint;
     /* N.B. not a typo -- should indeed be rates[0] despite others being indexed [2] */
-    //endpoint.Open(rates[0], nchans[2], globalopts, fileopts[2], paths[2], effectopts);
+    endpoint.Open(rates[0], nchans[2], globalopts, fileopts[2], paths[2], effectopts);
 
     filt.RegisterCallback(&endpoint);
     threads[2] = filt.Start();
@@ -202,9 +202,7 @@ int main(int argc, char ** argv) {
     
     filt.Stop();
     
-    
-    
-    //endpoint.Close();
+    endpoint.Close();
     return 0;
 }
 

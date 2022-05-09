@@ -55,7 +55,6 @@ void WavReader::Run() {
     if(pipe!= nullptr){
         pclose(pipe);
     }
-    printf("finished!\n");
 }
 
 void WavReader::ForceStop(){
