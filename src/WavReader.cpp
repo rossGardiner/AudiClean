@@ -49,7 +49,6 @@ void WavReader::Run() {
         eof = (fgets(rdbuf, bufmax, pipe) == nullptr);
         std::stringstream ss(rdbuf);
         double t, s;
-        printf("%s\n", ss.str().c_str());
         ss >> t >> s;
         sampleCallback->NextSample(s);
     }
