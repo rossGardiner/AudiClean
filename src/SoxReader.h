@@ -4,10 +4,11 @@
 #include <thread>
 #include <stdio.h>
 
-
 #include "SampleLink.h"
 
-
+/*!
+ * A pipeline element which allows samples to be piped from the SoX program.
+ */
 class SoxReader : public SampleLink{
 public:
     bool Open(int rate, int nchans, std::string globalopts, std::string fileopts, std::string filename);
