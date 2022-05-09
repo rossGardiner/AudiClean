@@ -45,14 +45,13 @@ void WavReader::SetOn(bool val) {
 
 void WavReader::Run() {
     bool eof = false;
-    while(isOn){
+    while(isOn && !eof){
         eof = (fgets(rdbuf, bufmax, pipe) == nullptr);
-        while(!eof && isOn) {
-            std::stringstream ss(rdbuf);
-            double t, s;
-            ss >> t >> s;
-            sampleCallback->NextSample(s);
-        }
+        std::stringstream ss(rdbuf);
+        double t, s;
+        printf("%s\n", ss.str().c_str());
+        ss >> t >> s;
+        sampleCallback->NextSample(s);
     }
 }
 
