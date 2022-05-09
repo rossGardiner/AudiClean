@@ -8,6 +8,11 @@ You must have SoX installed to use our application standalone. Install SoX with 
 ```
 sudo apt install sox 
 ```
+To make use of the DNF filter, you must also install the boost library:
+
+```
+ sudo apt-get install libboost-all-dev
+```
 
 # Build
 
