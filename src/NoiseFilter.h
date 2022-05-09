@@ -13,6 +13,10 @@
 #include "BlockingQueue.h"
 #include "BlockingQueue.cpp"
 
+/*!
+ * A pipeline element to derive real-time noise removal filters from. Inherits SampleLink. Derived Classes must implement the pure abstract Filter() function.
+ * Noise and dirty samples are synchronised by making use of two instances of BlockingQueue. A worker thread loads each samples pair and performs the filtering per-sample.
+ */
 class NoiseFilter: public SampleLink{
 public:
     void RunFilter();
@@ -23,9 +27,7 @@ public:
     void NextNoiseSample(double noise);
     void SetOn(bool state);
     bool GetOn();
-        
-        
-        
+    
 protected:
     BlockingQueue<double> signalSamples;
     BlockingQueue<double> noiseSamples;
