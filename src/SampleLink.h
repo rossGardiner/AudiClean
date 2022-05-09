@@ -2,6 +2,9 @@
 #define AUDICLEAN_SAMPLELINK_H
 
 #include "SampleCallback.h"
+/*!
+ * Extends SampleCallback to include facility to register a futher callback. Forms a pipeline element with an input and output.
+ */
 class SampleLink : public SampleCallback {
 public:
    void RegisterCallback(SampleCallback* scb);
