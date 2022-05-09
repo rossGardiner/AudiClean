@@ -6,8 +6,8 @@ FirLMS::FirLMS(int nrTaps, double lrate) : FirFilter(nrTaps, lrate) {
 }
 
 double FirLMS::Filter(double dirtySample, double noiseSample) {
-    double canceller = internalLMS->filter(dirtySample);
-    double outputSignal = noiseSample - canceller;
+    double canceller = internalLMS->filter(noiseSample);
+    double outputSignal = dirtySample - canceller;
     internalLMS->lms_update(outputSignal);
     return outputSignal;
 }

@@ -180,7 +180,7 @@ int main(int argc, char ** argv) {
     
     FilterInputSignal sigin;
     FilterInputNoise noisein;
-    FirLMS filt(50, 0.001);
+    FirLMS filt(100, 0.001);
     
     sigReader.RegisterCallback(&sigin);
     noiReader.RegisterCallback(&noisein);

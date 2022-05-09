@@ -45,6 +45,8 @@ void WavReader::SetOn(bool val) {
 
 void WavReader::Run() {
     bool eof = false;
+    eof = (fgets(rdbuf, bufmax, pipe) == nullptr);
+    eof = (fgets(rdbuf, bufmax, pipe) == nullptr);
     while(isOn && !eof){
         eof = (fgets(rdbuf, bufmax, pipe) == nullptr);
         std::stringstream ss(rdbuf);

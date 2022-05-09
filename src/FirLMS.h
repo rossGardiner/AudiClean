@@ -2,7 +2,7 @@
 #define AUDICLEAN_FILTERLMS_H
 
 #include "FirFilter.h"
-#include "Fir1.h"
+#include <Fir1.h>
 
 
 class FirLMS : public FirFilter{

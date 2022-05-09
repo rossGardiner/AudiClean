@@ -39,12 +39,9 @@ void FirFilter::SetOn(bool state) {
 
 void FirFilter::NextSignalSample(double sample){
     signalSamples.Push(sample);
-    //printf("sigsize: %d\n", signalSamples.Size());
 }
 
 void FirFilter::NextNoiseSample(double noise){
     noiseSamples.Push(noise);
-    //printf("noisize: %d\n", noiseSamples.Size());
-    
 }
 
