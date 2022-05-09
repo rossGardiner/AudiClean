@@ -4,7 +4,9 @@
 #include "NoiseFilter.h"
 #include <Fir1.h>
 
-
+/*
+* A pipeline component which extends NoiseFilter as an FIR Least-mean-squared Filter
+ */
 class FirLMS : public NoiseFilter{
 public:
     FirLMS(int nrTaps, double lrate);
