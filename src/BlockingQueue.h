@@ -21,14 +21,18 @@ template <typename T>
  */
 class BlockingQueue {
 public:
+    BlockingQueue(int maxSize=1);
     void Push(T toPush);
     T Pop();
     bool IsEmpty();
     int Size();
+    bool Full();
 private:
+    int maxSize;
     std::deque<T> internalQueue;
     std::mutex mutex;
-    std::condition_variable condition;
+    std::condition_variable isFull;
+    std::condition_variable isEmpty;
 };
 
 

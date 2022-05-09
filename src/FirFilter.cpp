@@ -7,9 +7,10 @@ FirFilter::FirFilter(int nrTaps, double lrate) {
 
 void FirFilter::RunFilter() {
     while(isOn){
-        double noiseSample = noiseSamples.Pop();
         double signalSample = signalSamples.Pop();
+        double noiseSample = noiseSamples.Pop();
         double filtered = Filter(signalSample, noiseSample);
+        //printf("sig: %f, noi: %f, filtered %f\n",signalSample, noiseSample, filtered );
         if(sampleCallback) {
             sampleCallback->NextSample(filtered);
         }
@@ -22,7 +23,6 @@ std::thread * FirFilter::Start() {
 }
 
 void FirFilter::Stop(){
-    //set isOn to false
     isOn = false;
     //add dummy samples to exit run loop
     noiseSamples.Push(0.0);

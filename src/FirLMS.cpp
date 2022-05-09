@@ -6,5 +6,5 @@ FirLMS::FirLMS(int nrTaps, double lrate) : FirFilter(nrTaps, lrate) {
 }
 
 double FirLMS::Filter(double dirtySample, double noiseSample) {
-    return 0.0;
+    return dirtySample + noiseSample;
 }
