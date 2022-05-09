@@ -22,6 +22,7 @@ THE SOFTWARE.
 
 /* (C) 2013 Graeme Hattan & Bernd Porr */
 /* (C) 2018-2021 Bernd Porr */
+/* (C) 2022 Ross Gardiner */
 
 #include "Fir1.h"
 
@@ -30,7 +31,11 @@ THE SOFTWARE.
 #include <assert.h>
 #include <stdexcept>
 
-// give the filter an array of doubles for the coefficients
+/*!
+ * Initialise the filter from coefficients, assigned as array
+ * @param _coefficients coeffs to be assigned
+ * @param number_of_taps nr of taps (array length)
+ */
 Fir1::Fir1(double *_coefficients, unsigned number_of_taps) :
 	coefficients(new double[number_of_taps]),
 	buffer(new double[number_of_taps]()),
@@ -41,7 +46,10 @@ Fir1::Fir1(double *_coefficients, unsigned number_of_taps) :
 	}
 }
 
-// init all coefficients and the buffer to zero
+/*!
+ * Initalise the filter with empty coefficients
+ * @param number_of_taps nr of taps (filter order)
+ */
 Fir1::Fir1(unsigned number_of_taps) :
 	coefficients(new double[number_of_taps]),
 	buffer(new double[number_of_taps]),  
@@ -50,6 +58,10 @@ Fir1::Fir1(unsigned number_of_taps) :
 	reset();
 }
 
+/*!
+ * Initialise the filter with a std::vector of coefficients
+ * @param _coefficients
+ */
 void Fir1::initWithVector(std::vector<double> _coefficients) {
 	coefficients = new double[_coefficients.size()];
 	buffer = new double[_coefficients.size()]();
@@ -60,7 +72,11 @@ void Fir1::initWithVector(std::vector<double> _coefficients) {
 	}
 }	
 
-// one coefficient per line
+/*!
+ * Initialise the filter coefficients with a text file where each line is has one coefficient
+ * @param coeffFile text file for initialisation
+ * @param number_of_taps nr of fiter taps (order)
+ */
 Fir1::Fir1(const char* coeffFile, unsigned number_of_taps) {
 
 	std::vector<double> tmpCoefficients;
@@ -79,7 +95,9 @@ Fir1::Fir1(const char* coeffFile, unsigned number_of_taps) {
 	initWithVector(tmpCoefficients);
 }
 
-
+/*!
+ * Filter destructor
+ */
 Fir1::~Fir1()
 {
 	delete[] buffer;
@@ -87,17 +105,28 @@ Fir1::~Fir1()
 }
 
 
+/*!
+ * sets all tap outputs to zero
+ */
 void Fir1::reset()
 {
 	memset(buffer, 0, sizeof(double)*taps);
 	offset = 0;
 }
 
+/*!
+ * Sets all coeffs to zero
+ */
 void Fir1::zeroCoeff() {
 	memset(coefficients, 0, sizeof(double)*taps);
 	offset = 0;
 }
 
+/*!
+ * Copies a coeffs to coeff_data array
+ * @param coeff_data
+ * @param number_of_taps
+ */
 void Fir1::getCoeff(double* coeff_data, unsigned number_of_taps) const {
 	
 	if (number_of_taps < taps)
