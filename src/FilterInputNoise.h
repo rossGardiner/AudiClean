@@ -5,7 +5,7 @@
 #include "NoiseFilter.h"
 
 /*!
- * Inherits SampleCallback, acts as an interface to the noise input to a filter
+ * Inherits SampleCallback, acts as an interface to the asynchonous noise input to a NoiseFiler
  */
 class FilterInputNoise : public SampleCallback{
 public:
