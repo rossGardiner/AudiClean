@@ -16,7 +16,7 @@ template <typename T>
 */
 
 /*!
- * Class to wrap around std::deque and block thread execution when no data is available at the output.
+ * Class to wrap around std::deque and block thread execution when no data is available at the output or when the queue is full.
  * @tparam T Type of elements in the queue
  */
 class BlockingQueue {

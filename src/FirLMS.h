@@ -1,11 +1,11 @@
 #ifndef AUDICLEAN_FILTERLMS_H
 #define AUDICLEAN_FILTERLMS_H
 
-#include "FirFilter.h"
+#include "NoiseFilter.h"
 #include <Fir1.h>
 
 
-class FirLMS : public FirFilter{
+class FirLMS : public NoiseFilter{
 public:
     FirLMS(int nrTaps, double lrate);
     double Filter(double dirtySample, double noiseSample) override;

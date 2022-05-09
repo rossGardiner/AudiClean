@@ -1,11 +1,7 @@
-#include "FirFilter.h"
+#include "NoiseFilter.h"
 
-FirFilter::FirFilter(int nrTaps, double lrate) {
-    nrTaps = nrTaps;
-    lrate = lrate;
-}
 
-void FirFilter::RunFilter() {
+void NoiseFilter::RunFilter() {
     while(isOn){
         double signalSample = signalSamples.Pop();
         double noiseSample = noiseSamples.Pop();
@@ -16,12 +12,12 @@ void FirFilter::RunFilter() {
     }
 }
 
-std::thread * FirFilter::Start() {
-    worker = std::thread(&FirFilter::RunFilter, this);
+std::thread * NoiseFilter::Start() {
+    worker = std::thread(&NoiseFilter::RunFilter, this);
     return &worker;
 }
 
-void FirFilter::Stop(){
+void NoiseFilter::Stop(){
     isOn = false;
     //add dummy samples to exit run loop
     if(signalSamples.Size() == 0) signalSamples.Push(0.0);
@@ -29,19 +25,19 @@ void FirFilter::Stop(){
     worker.join();
 }
 
-bool FirFilter::GetOn() {
+bool NoiseFilter::GetOn() {
     return isOn;
 }
 
-void FirFilter::SetOn(bool state) {
+void NoiseFilter::SetOn(bool state) {
     isOn = state;
 }
 
-void FirFilter::NextSignalSample(double sample){
+void NoiseFilter::NextSignalSample(double sample){
     signalSamples.Push(sample);
 }
 
-void FirFilter::NextNoiseSample(double noise){
+void NoiseFilter::NextNoiseSample(double noise){
     noiseSamples.Push(noise);
 }
 

@@ -2,14 +2,14 @@
 #define AUDICLEAN_FILTERINPUTSIGNAL_H
 
 #include "SampleCallback.h"
-#include "FirFilter.h"
+#include "NoiseFilter.h"
 
 class FilterInputSignal : public SampleCallback{
 public:
-    void RegisterCallback(FirFilter* filterCallback);
+    void RegisterCallback(NoiseFilter* filterCallback);
     void NextSample(double sample);
 protected:
-    FirFilter* filterCallback;
+    NoiseFilter* filterCallback;
 };
 
 

@@ -1,6 +1,6 @@
 #include "FirLMS.h"
 
-FirLMS::FirLMS(int nrTaps, double lrate) : FirFilter(nrTaps, lrate) {
+FirLMS::FirLMS(int nrTaps, double lrate){
     internalLMS = new Fir1(nrTaps);
     internalLMS->setLearningRate(lrate);
 }

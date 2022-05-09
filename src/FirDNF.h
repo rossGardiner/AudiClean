@@ -1,12 +1,12 @@
 #ifndef AUDICLEAN_FIRDNF_H
 #define AUDICLEAN_FIRDNF_H
 
-#include "FirFilter.h"
+#include "NoiseFilter.h"
 #include <boost/circular_buffer.hpp>
 #include "dnf.h"
 
 
-class FirDNF : public FirFilter{
+class FirDNF : public NoiseFilter{
 public:
     FirDNF(int nrTaps, double lrate, int sampleRate);
     double Filter(double dirtySample, double noiseSample) override;

@@ -4,7 +4,7 @@
 
 #include "FilterInputSignal.h"
 
-void FilterInputSignal::RegisterCallback(FirFilter* _filterCallback){
+void FilterInputSignal::RegisterCallback(NoiseFilter* _filterCallback){
     filterCallback = _filterCallback;
 }
 

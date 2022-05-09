@@ -1,10 +1,6 @@
-//
-// Created by ross on 02/05/2022.
-//
-
 #include "FilterInputNoise.h"
 
-void FilterInputNoise::RegisterCallback(FirFilter* _filterCallback){
+void FilterInputNoise::RegisterCallback(NoiseFilter* _filterCallback){
     filterCallback = _filterCallback;
 }
 

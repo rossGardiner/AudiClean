@@ -2,8 +2,8 @@
 // Created by ross on 30/04/2022.
 //
 
-#ifndef AUDICLEAN_FIRFILTER_H
-#define AUDICLEAN_FIRFILTER_H
+#ifndef AUDICLEAN_NOISEFILTER_H
+#define AUDICLEAN_NOISEFILTER_H
 
 #include <thread>
 #include <mutex>
@@ -13,9 +13,8 @@
 #include "BlockingQueue.h"
 #include "BlockingQueue.cpp"
 
-class FirFilter: public SampleLink{
+class NoiseFilter: public SampleLink{
 public:
-    FirFilter(int nrTaps, double lrate);
     void RunFilter();
     std::thread * Start();
     void Stop();
@@ -27,11 +26,9 @@ public:
         
         
         
-        protected:
+protected:
     BlockingQueue<double> signalSamples;
     BlockingQueue<double> noiseSamples;
-    double lrate = 0.0;
-    int nrTaps = 0;
     std::thread worker;
     bool isOn = true;
 };
