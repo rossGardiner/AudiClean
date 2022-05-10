@@ -2,7 +2,7 @@
 #define AUDICLEAN_FILTERLMS_H
 
 #include "NoiseFilter.h"
-#include <Fir1.h>
+#include "Fir1.h"
 
 /*
 * A pipeline component which extends NoiseFilter as an FIR Least-mean-squared Filter

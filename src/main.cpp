@@ -18,6 +18,9 @@ int main(int argc, char ** argv) {
     int rates[3] = {0,0,0}, nchans[3] = {0,0,0};
     int pcnt = 0;
     std::thread * threads[3];
+    double lr = 0.001;
+    int nt = 100;
+    bool dnf = false;
 
     for(i = 1; i < argc; i++) {
         if(argv[i][0] != '-') {
@@ -33,6 +36,23 @@ int main(int argc, char ** argv) {
 		break;
 	    case 'h':
 		/* TODO Show our help */
+		break;
+            case 'l':
+		if(argv[i][2]) {
+	            lr = atof(argv[i] + 2);
+		} else if(++i < argc) {
+                    lr = atof(argv[i]);
+                } else goto error;
+		break;
+	    case 'T':
+		if(argv[i][2]) {
+	            nt = atoi(argv[i] + 2);
+		} else if(++i < argc) {
+                    nt = atoi(argv[i]);
+                } else goto error;
+		break;
+	    case 'D':
+		dnf = true;
 		break;
 	    case 'q':
 	    case 'S':
@@ -181,28 +201,31 @@ int main(int argc, char ** argv) {
     
     FilterInputSignal sigin;
     FilterInputNoise noisein;
-    //FirLMS filt(100, 0.001);
-    FirDNF filt(100, 0.001, rates[0]);
+    FirLMS flms(nt, lr);
+    FirDNF fdnf(nt, lr, rates[0]);
+    NoiseFilter * filt;
+    if(dnf) filt = &fdnf;
+    else filt = &flms;
     
     sigReader.RegisterCallback(&sigin);
     noiReader.RegisterCallback(&noisein);
-    sigin.RegisterCallback(&filt);
-    noisein.RegisterCallback(&filt);
+    sigin.RegisterCallback(filt);
+    noisein.RegisterCallback(filt);
     
     SoxEndpoint endpoint;
     //SampleLink endpoint;
     /* N.B. not a typo -- should indeed be rates[0] despite others being indexed [2] */
     endpoint.Open(rates[0], nchans[2], globalopts, fileopts[2], paths[2], effectopts);
 
-    filt.RegisterCallback(&endpoint);
-    threads[2] = filt.Start();
+    filt->RegisterCallback(&endpoint);
+    threads[2] = filt->Start();
     
     threads[0] = sigReader.Start(rates[0], nchans[0], globalopts, fileopts[0], paths[0]);
     threads[1] = noiReader.Start(rates[1], nchans[1], globalopts, fileopts[1], paths[1]);
     
     for(i = 0; i < 2; i++) if(threads[i]) threads[i]->join();
     
-    filt.Stop();
+    filt->Stop();
     
     endpoint.Close();
     return 0;
