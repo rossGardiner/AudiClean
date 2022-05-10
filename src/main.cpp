@@ -8,6 +8,12 @@
 #include "FilterInputSignal.h"
 #include "FilterInputNoise.h"
 
+static void prt_usage(char * exe) {
+    fprintf(stderr, "Usage: %s [-D] [-l<lrate>] [-T<ntaps>] [<sox global options>] [<sox input options>]\n", exe);
+    fprintf(stderr, "\t<input file> [<sox noiseref options>] <noise file> [sox output options] <output file>\n\n");
+}
+
+
 int main(int argc, char ** argv) {
     int i;
     char * s;
@@ -24,166 +30,175 @@ int main(int argc, char ** argv) {
 
     for(i = 1; i < argc; i++) {
         if(argv[i][0] != '-') {
-	    if(pcnt > 2) goto error;
-	    paths[pcnt++] = argv[i];
-	} else switch(argv[i][1]) {
-	    case '\0':
-	    case 'p':
+            if(pcnt > 2) goto error;
+            paths[pcnt++] = argv[i];
+        } else switch(argv[i][1]) {
+            case '\0':
+            case 'p':
             case 'd':
             case 'n':
-	        if(pcnt > 2) goto error;
-	        paths[pcnt++] = argv[i];
-		break;
-	    case 'h':
-		/* TODO Show our help */
-		break;
+                if(pcnt > 2) goto error;
+                paths[pcnt++] = argv[i];
+                break;
+            case 'h':
+                prt_usage(argv[0]);
+                fprintf(stderr, "The -D option causes a DNF filter rather than a single-layer LMS filter to be used.\n");
+                fprintf(stderr, "The -l and -T options control the filter parameters.\n");
+                fprintf(stderr, "Standard 'sox' options may be used directly in their short form. File options will\n");
+                fprintf(stderr, "apply to the following input file, just as they would in a normal sox invocation.\n");
+                fprintf(stderr, "Long options (those beginning with '--') must be escaped with '-G' for global\n");
+                fprintf(stderr, "options, '-I' for input file options, '-R' for noise reference file options, or\n");
+                fprintf(stderr, "'-O' for output file options. Sox effects must be escaped with '-E' and will be\n");
+                fprintf(stderr, "applied after the filter.\n");
+                return 0;
             case 'l':
-		if(argv[i][2]) {
-	            lr = atof(argv[i] + 2);
-		} else if(++i < argc) {
+                if(argv[i][2]) {
+                    lr = atof(argv[i] + 2);
+                } else if(++i < argc) {
                     lr = atof(argv[i]);
                 } else goto error;
-		break;
-	    case 'T':
-		if(argv[i][2]) {
-	            nt = atoi(argv[i] + 2);
-		} else if(++i < argc) {
+                break;
+            case 'T':
+                if(argv[i][2]) {
+                    nt = atoi(argv[i] + 2);
+                } else if(++i < argc) {
                     nt = atoi(argv[i]);
                 } else goto error;
-		break;
-	    case 'D':
-		dnf = true;
-		break;
-	    case 'q':
-	    case 'S':
-	    case 'V':
-		/* Pass as global options */
-		strncat(globalopts, argv[i], 255);
-		strncat(globalopts, " ", 255);
-		break;
-	    case 'c':
-		/* Channel count -- pass as file opt and take note */
-		strncat(fileopts[pcnt], argv[i], 255);
-    		strncat(fileopts[pcnt], " ", 255);
-		if(argv[i][2]) {
-	            nchans[pcnt] = atoi(argv[i] + 2);
-		} else if(++i < argc) {
-		    nchans[pcnt] = atoi(argv[i]);
-		    strncat(fileopts[pcnt], argv[i], 255);
-		    strncat(fileopts[pcnt], " ", 255);
-		} else goto error;
-		break;
-	    case 'r':
-		/* Sample rate -- pass as file opt and take note */
-		strncat(fileopts[pcnt], argv[i], 255);
-    		strncat(fileopts[pcnt], " ", 255);
-		if(argv[i][2]) {
-	            rates[pcnt] = strtoul(argv[i] + 2, &s, 0);
-		    if(*s == 'k') rates[pcnt] *= 1000;
-		} else if(++i < argc) {
-		    rates[pcnt] = strtoul(argv[i], &s, 0);
-		    if(*s == 'k') rates[pcnt] *= 1000;
-		    strncat(fileopts[pcnt], argv[i], 255);
-		    strncat(fileopts[pcnt], " ", 255);
-		} else goto error;
-		break;
-	    case 'v':
-	    case 'b':
-	    case 'e':
-	    case 't':
-	    case 'C':
-		/* Pass this and possibly next as file options */
-		strncat(fileopts[pcnt], argv[i], 255);
-		strncat(fileopts[pcnt], " ", 255);
-		if(!argv[i][2] && ++i < argc) {
-		    strncat(fileopts[pcnt], argv[i], 255);
-		    strncat(fileopts[pcnt], " ", 255);
-		}
-	        break;
-	    case '1':
-	    case '2':
-	    case '3':
-	    case '4':
-	    case '8':
-	    case 'L':
-	    case 'B':
-	    case 'x':
-	    case 'N':
-	    case 'X':
-	    case 's':
-	    case 'u':
-	    case 'f':
-	    case 'A':
-	    case 'U':
-	    case 'o':
-	    case 'i':
-	    case 'a':
-	    case 'g':
-		/* TODO pass as file options */
-		strncat(fileopts[pcnt], argv[i], 255);
-		strncat(fileopts[pcnt], " ", 255);
-		break;
-	    case 'E':
-		/* Drop and pass next as effect options */
-		if(argv[i][2]) {
-		    strncat(effectopts, argv[i] + 2, 255);
-		    strncat(effectopts, " ", 255);
-		} else if(++i < argc) {
-		    strncat(effectopts, argv[i], 255);
-		    strncat(effectopts, " ", 255);
-		}
-		break;
-	    case 'I':
-		/* Drop and pass next as input options */
-		if(argv[i][2]) {
-		    if(argv[i][2] != '-') strncat(fileopts[0], "-", 255);
-		    strncat(fileopts[0], argv[i] + 2, 255);
-		    strncat(fileopts[0], " ", 255);
-		} else if(++i < argc) {
-		    strncat(fileopts[0], argv[i], 255);
-		    strncat(fileopts[0], " ", 255);
-		}
-		break;
-	    case 'R':
-		/* Drop and pass next as noise reference options */
-		if(argv[i][2]) {
-		    if(argv[i][2] != '-') strncat(fileopts[1], "-", 255);
-		    strncat(fileopts[1], argv[i] + 2, 255);
-		    strncat(fileopts[1], " ", 255);
-		} else if(++i < argc) {
-		    strncat(fileopts[1], argv[i], 255);
-		    strncat(fileopts[1], " ", 255);
-		}
-		break;
-	    case 'O':
-		/* Drop and pass next as output options */
-		if(argv[i][2]) {
-		    if(argv[i][2] != '-') strncat(fileopts[2], "-", 255);
-		    strncat(fileopts[2], argv[i] + 2, 255);
-		    strncat(fileopts[2], " ", 255);
-		} else if(++i < argc) {
-		    strncat(fileopts[2], argv[i], 255);
-		    strncat(fileopts[2], " ", 255);
-		}
-		break;
-	    case 'G':
-		/* Drop and pass next as global options */
-		if(argv[i][2]) {
-		    if(argv[i][2] != '-') strncat(globalopts, "-", 255);
-		    strncat(globalopts, argv[i] + 2, 255);
-		    strncat(globalopts, " ", 255);
-		} else if(++i < argc) {
-		    strncat(globalopts, argv[i], 255);
-		    strncat(globalopts, " ", 255);
-		}
-		break;
-	    default: goto error;
-	}	
+                break;
+            case 'D':
+                dnf = true;
+                break;
+            case 'q':
+            case 'S':
+            case 'V':
+                /* Pass as global options */
+                strncat(globalopts, argv[i], 255);
+                strncat(globalopts, " ", 255);
+                break;
+            case 'c':
+                /* Channel count -- pass as file opt and take note */
+                strncat(fileopts[pcnt], argv[i], 255);
+                    strncat(fileopts[pcnt], " ", 255);
+                if(argv[i][2]) {
+                    nchans[pcnt] = atoi(argv[i] + 2);
+                } else if(++i < argc) {
+                    nchans[pcnt] = atoi(argv[i]);
+                    strncat(fileopts[pcnt], argv[i], 255);
+                    strncat(fileopts[pcnt], " ", 255);
+                } else goto error;
+                break;
+            case 'r':
+                /* Sample rate -- pass as file opt and take note */
+                strncat(fileopts[pcnt], argv[i], 255);
+                    strncat(fileopts[pcnt], " ", 255);
+                if(argv[i][2]) {
+                    rates[pcnt] = strtoul(argv[i] + 2, &s, 0);
+                    if(*s == 'k') rates[pcnt] *= 1000;
+                } else if(++i < argc) {
+                    rates[pcnt] = strtoul(argv[i], &s, 0);
+                    if(*s == 'k') rates[pcnt] *= 1000;
+                    strncat(fileopts[pcnt], argv[i], 255);
+                    strncat(fileopts[pcnt], " ", 255);
+                } else goto error;
+                break;
+            case 'v':
+            case 'b':
+            case 'e':
+            case 't':
+            case 'C':
+                /* Pass this and possibly next as file options */
+                strncat(fileopts[pcnt], argv[i], 255);
+                strncat(fileopts[pcnt], " ", 255);
+                if(!argv[i][2] && ++i < argc) {
+                    strncat(fileopts[pcnt], argv[i], 255);
+                    strncat(fileopts[pcnt], " ", 255);
+                }
+                break;
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '8':
+            case 'L':
+            case 'B':
+            case 'x':
+            case 'N':
+            case 'X':
+            case 's':
+            case 'u':
+            case 'f':
+            case 'A':
+            case 'U':
+            case 'o':
+            case 'i':
+            case 'a':
+            case 'g':
+                /* TODO pass as file options */
+                strncat(fileopts[pcnt], argv[i], 255);
+                strncat(fileopts[pcnt], " ", 255);
+                break;
+            case 'E':
+                /* Drop and pass next as effect options */
+                if(argv[i][2]) {
+                    strncat(effectopts, argv[i] + 2, 255);
+                    strncat(effectopts, " ", 255);
+                } else if(++i < argc) {
+                    strncat(effectopts, argv[i], 255);
+                    strncat(effectopts, " ", 255);
+                }
+                break;
+            case 'I':
+                /* Drop and pass next as input options */
+                if(argv[i][2]) {
+                    if(argv[i][2] != '-') strncat(fileopts[0], "-", 255);
+                    strncat(fileopts[0], argv[i] + 2, 255);
+                    strncat(fileopts[0], " ", 255);
+                } else if(++i < argc) {
+                    strncat(fileopts[0], argv[i], 255);
+                    strncat(fileopts[0], " ", 255);
+                }
+                break;
+            case 'R':
+                /* Drop and pass next as noise reference options */
+                if(argv[i][2]) {
+                    if(argv[i][2] != '-') strncat(fileopts[1], "-", 255);
+                    strncat(fileopts[1], argv[i] + 2, 255);
+                    strncat(fileopts[1], " ", 255);
+                } else if(++i < argc) {
+                    strncat(fileopts[1], argv[i], 255);
+                    strncat(fileopts[1], " ", 255);
+                }
+                break;
+            case 'O':
+                /* Drop and pass next as output options */
+                if(argv[i][2]) {
+                    if(argv[i][2] != '-') strncat(fileopts[2], "-", 255);
+                    strncat(fileopts[2], argv[i] + 2, 255);
+                    strncat(fileopts[2], " ", 255);
+                } else if(++i < argc) {
+                    strncat(fileopts[2], argv[i], 255);
+                    strncat(fileopts[2], " ", 255);
+                }
+                break;
+            case 'G':
+                /* Drop and pass next as global options */
+                if(argv[i][2]) {
+                    if(argv[i][2] != '-') strncat(globalopts, "-", 255);
+                    strncat(globalopts, argv[i] + 2, 255);
+                    strncat(globalopts, " ", 255);
+                } else if(++i < argc) {
+                    strncat(globalopts, argv[i], 255);
+                    strncat(globalopts, " ", 255);
+                }
+                break;
+            default: goto error;
+        }        
     }
 
     if(pcnt < 3) {
       error:
-  	fprintf(stderr, "Unrecognised argument\n");
+        fprintf(stderr, "Unrecognised argument\n");
+        prt_usage(argv[0]);
         return 1;
     }
    
