@@ -14,6 +14,11 @@ To make use of the DNF filter, you must also install the boost library:
  sudo apt-get install libboost-all-dev
 ```
 
+Both of these packages may be easily installed by running our `setup.sh` script:
+```
+bash setup.sh
+```
+
 # Build
 
 To build `AudiClean` use `cmake` and `make` as shown:
