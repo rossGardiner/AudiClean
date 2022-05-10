@@ -1,8 +1,0 @@
-<map id="FilterInputSignal" name="FilterInputSignal">
-<area shape="rect" id="node1" title=" " alt="" coords="5,704,163,796"/>
-<area shape="rect" id="node2" href="$classSampleCallback.html" title=" " alt="" coords="71,42,198,119"/>
-<area shape="rect" id="node4" href="$classSampleLink.html" title=" " alt="" coords="100,248,257,340"/>
-<area shape="rect" id="node3" href="$classNoiseFilter.html" title=" " alt="" coords="101,447,267,641"/>
-<area shape="rect" id="node5" href="$classBlockingQueue.html" title=" " alt="" coords="281,219,476,369"/>
-<area shape="rect" id="node6" href="$classBlockingQueue.html" title="BlockingQueue Class." alt="" coords="299,5,458,156"/>
-</map>

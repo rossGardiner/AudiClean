@@ -1,8 +1,0 @@
-<map id="SampleLink" name="SampleLink">
-<area shape="rect" id="node1" title=" " alt="" coords="123,131,280,223"/>
-<area shape="rect" id="node3" href="$classNoiseFilter.html" title=" " alt="" coords="25,271,191,495"/>
-<area shape="rect" id="node6" href="$classSoxReader.html" title=" " alt="" coords="215,300,377,465"/>
-<area shape="rect" id="node2" href="$classSampleCallback.html" title=" " alt="" coords="138,5,265,83"/>
-<area shape="rect" id="node4" href="$classFirDNF.html" title=" " alt="" coords="5,543,96,635"/>
-<area shape="rect" id="node5" href="$classFirLMS.html" title=" " alt="" coords="121,543,210,635"/>
-</map>
