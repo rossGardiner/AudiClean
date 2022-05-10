@@ -1,0 +1,141 @@
+\hypertarget{classSoxReader}{}\doxysection{Sox\+Reader Class Reference}
+\label{classSoxReader}\index{SoxReader@{SoxReader}}
+
+
+{\ttfamily \#include $<$Sox\+Reader.\+h$>$}
+
+
+
+Inheritance diagram for Sox\+Reader\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{classSoxReader__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Sox\+Reader\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{classSoxReader__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classSoxReader_af246cd4b48e4d7db81cd6e0b579e0b47}{Open}} (int rate, int nchans, std\+::string globalopts, std\+::string fileopts, std\+::string filename)
+\item 
+std\+::thread $\ast$ \mbox{\hyperlink{classSoxReader_aa22b6518291a276dc1b1d07f0a4bedbb}{Start}} (int rate, int nchans, std\+::string globalopts, std\+::string fileopts, std\+::string filename)
+\item 
+void \mbox{\hyperlink{classSoxReader_afedd08acec0ad4c7cd7a5e9f7e148851}{Force\+Stop}} ()
+\item 
+void \mbox{\hyperlink{classSoxReader_af6b8fbad7b07f9654cf256c879ac5c69}{Run}} ()
+\item 
+int \mbox{\hyperlink{classSoxReader_aaef8274f9f0fed8682e6aa8bc80de2e2}{Get\+Num\+Channels}} ()
+\item 
+int \mbox{\hyperlink{classSoxReader_ae342889ed658918cdc337faa5d475f37}{Get\+Sample\+Rate}} ()
+\item 
+void \mbox{\hyperlink{classSoxReader_af2d8da3ef06f8869757108da9740f25d}{Set\+On}} (bool val)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A pipeline element which allows samples to be piped from the SoX program. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSoxReader_afedd08acec0ad4c7cd7a5e9f7e148851}\label{classSoxReader_afedd08acec0ad4c7cd7a5e9f7e148851}} 
+\index{SoxReader@{SoxReader}!ForceStop@{ForceStop}}
+\index{ForceStop@{ForceStop}!SoxReader@{SoxReader}}
+\doxysubsubsection{\texorpdfstring{ForceStop()}{ForceStop()}}
+{\footnotesize\ttfamily void Sox\+Reader\+::\+Force\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Brute-\/force stop the \mbox{\hyperlink{classSoxReader}{Sox\+Reader}}, will attempt to close the pipe and join the worker thread. \mbox{\Hypertarget{classSoxReader_aaef8274f9f0fed8682e6aa8bc80de2e2}\label{classSoxReader_aaef8274f9f0fed8682e6aa8bc80de2e2}} 
+\index{SoxReader@{SoxReader}!GetNumChannels@{GetNumChannels}}
+\index{GetNumChannels@{GetNumChannels}!SoxReader@{SoxReader}}
+\doxysubsubsection{\texorpdfstring{GetNumChannels()}{GetNumChannels()}}
+{\footnotesize\ttfamily int Sox\+Reader\+::\+Get\+Num\+Channels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the nr of channels in the audio file to open \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSoxReader_ae342889ed658918cdc337faa5d475f37}\label{classSoxReader_ae342889ed658918cdc337faa5d475f37}} 
+\index{SoxReader@{SoxReader}!GetSampleRate@{GetSampleRate}}
+\index{GetSampleRate@{GetSampleRate}!SoxReader@{SoxReader}}
+\doxysubsubsection{\texorpdfstring{GetSampleRate()}{GetSampleRate()}}
+{\footnotesize\ttfamily int Sox\+Reader\+::\+Get\+Sample\+Rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the sample rate of the audio file to open \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSoxReader_af246cd4b48e4d7db81cd6e0b579e0b47}\label{classSoxReader_af246cd4b48e4d7db81cd6e0b579e0b47}} 
+\index{SoxReader@{SoxReader}!Open@{Open}}
+\index{Open@{Open}!SoxReader@{SoxReader}}
+\doxysubsubsection{\texorpdfstring{Open()}{Open()}}
+{\footnotesize\ttfamily bool Sox\+Reader\+::\+Open (\begin{DoxyParamCaption}\item[{int}]{rate,  }\item[{int}]{nchan,  }\item[{std\+::string}]{globalopts,  }\item[{std\+::string}]{fileopts,  }\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+
+Open the pipe from SoX 
+\begin{DoxyParams}{Parameters}
+{\em rate} & \\
+\hline
+{\em nchan} & \\
+\hline
+{\em globalopts} & \\
+\hline
+{\em fileopts} & \\
+\hline
+{\em filename} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if opening file successful, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSoxReader_af6b8fbad7b07f9654cf256c879ac5c69}\label{classSoxReader_af6b8fbad7b07f9654cf256c879ac5c69}} 
+\index{SoxReader@{SoxReader}!Run@{Run}}
+\index{Run@{Run}!SoxReader@{SoxReader}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Sox\+Reader\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Work function for the worker thread, reads samples from the SoX pipe, processes them and passes on to the next pipeline element. Continues while is\+On is set and the end of the pipe is not reached. \mbox{\Hypertarget{classSoxReader_af2d8da3ef06f8869757108da9740f25d}\label{classSoxReader_af2d8da3ef06f8869757108da9740f25d}} 
+\index{SoxReader@{SoxReader}!SetOn@{SetOn}}
+\index{SetOn@{SetOn}!SoxReader@{SoxReader}}
+\doxysubsubsection{\texorpdfstring{SetOn()}{SetOn()}}
+{\footnotesize\ttfamily void Sox\+Reader\+::\+Set\+On (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})}
+
+Sets the is\+On status of the \mbox{\hyperlink{classSoxReader}{Sox\+Reader}} 
+\begin{DoxyParams}{Parameters}
+{\em val} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSoxReader_aa22b6518291a276dc1b1d07f0a4bedbb}\label{classSoxReader_aa22b6518291a276dc1b1d07f0a4bedbb}} 
+\index{SoxReader@{SoxReader}!Start@{Start}}
+\index{Start@{Start}!SoxReader@{SoxReader}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily std\+::thread $\ast$ Sox\+Reader\+::\+Start (\begin{DoxyParamCaption}\item[{int}]{rate,  }\item[{int}]{nchan,  }\item[{std\+::string}]{globalopts,  }\item[{std\+::string}]{fileopts,  }\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+
+Starts reading from the pipe from SoX, returns a thread which lives as long as the pipe does 
+\begin{DoxyParams}{Parameters}
+{\em rate} & \\
+\hline
+{\em nchan} & \\
+\hline
+{\em globalopts} & \\
+\hline
+{\em fileopts} & \\
+\hline
+{\em filename} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{SoxReader_8h}{Sox\+Reader.\+h}}\item 
+src/\mbox{\hyperlink{SoxReader_8cpp}{Sox\+Reader.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,165 @@
+\hypertarget{classBlockingQueue}{}\doxysection{Blocking\+Queue$<$ T $>$ Class Template Reference}
+\label{classBlockingQueue}\index{BlockingQueue$<$ T $>$@{BlockingQueue$<$ T $>$}}
+
+
+\mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}} Class.  
+
+
+
+
+{\ttfamily \#include $<$Blocking\+Queue.\+h$>$}
+
+
+
+Inheritance diagram for Blocking\+Queue$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{classBlockingQueue__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Blocking\+Queue$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classBlockingQueue__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBlockingQueue_a411c165bb6e00bb6414f4a7b6253eb4a}{Blocking\+Queue}} (int max\+Size=1)
+\item 
+void \mbox{\hyperlink{classBlockingQueue_a6b320feb628e94e01d51975ec93af656}{Push}} (T to\+Push)
+\item 
+T \mbox{\hyperlink{classBlockingQueue_aadf9ce8df034b29537feb5fd492819fd}{Pop}} ()
+\item 
+bool \mbox{\hyperlink{classBlockingQueue_ab144302dd6dbdd50fc994f3432581d12}{Is\+Empty}} ()
+\item 
+int \mbox{\hyperlink{classBlockingQueue_aab57e39ee47d79c2f8c604a0a0239279}{Size}} ()
+\item 
+bool \mbox{\hyperlink{classBlockingQueue_a21be2727806f6a0a96cd53c0ebd4cb1d}{Full}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Blocking\+Queue$<$ T $>$}
+
+\mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}} Class. 
+
+Class to wrap around std\+::deque and block thread execution when no data is available at the output or when the queue is full. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type of elements in the queue \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBlockingQueue_a411c165bb6e00bb6414f4a7b6253eb4a}\label{classBlockingQueue_a411c165bb6e00bb6414f4a7b6253eb4a}} 
+\index{BlockingQueue$<$ T $>$@{BlockingQueue$<$ T $>$}!BlockingQueue@{BlockingQueue}}
+\index{BlockingQueue@{BlockingQueue}!BlockingQueue$<$ T $>$@{BlockingQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{BlockingQueue()}{BlockingQueue()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}$<$ T $>$\+::\mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}} (\begin{DoxyParamCaption}\item[{int}]{\+\_\+max\+Size = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+constructor for \mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}, max\+Size may be set 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+max\+Size} & maximum size of the blocking queue to set \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBlockingQueue_a21be2727806f6a0a96cd53c0ebd4cb1d}\label{classBlockingQueue_a21be2727806f6a0a96cd53c0ebd4cb1d}} 
+\index{BlockingQueue$<$ T $>$@{BlockingQueue$<$ T $>$}!Full@{Full}}
+\index{Full@{Full}!BlockingQueue$<$ T $>$@{BlockingQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Full()}{Full()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}$<$ T $>$\+::Full}
+
+checks if the queue is full 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+true if full; false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBlockingQueue_ab144302dd6dbdd50fc994f3432581d12}\label{classBlockingQueue_ab144302dd6dbdd50fc994f3432581d12}} 
+\index{BlockingQueue$<$ T $>$@{BlockingQueue$<$ T $>$}!IsEmpty@{IsEmpty}}
+\index{IsEmpty@{IsEmpty}!BlockingQueue$<$ T $>$@{BlockingQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{IsEmpty()}{IsEmpty()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}$<$ T $>$\+::Is\+Empty}
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+true if internal queue empty, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBlockingQueue_aadf9ce8df034b29537feb5fd492819fd}\label{classBlockingQueue_aadf9ce8df034b29537feb5fd492819fd}} 
+\index{BlockingQueue$<$ T $>$@{BlockingQueue$<$ T $>$}!Pop@{Pop}}
+\index{Pop@{Pop}!BlockingQueue$<$ T $>$@{BlockingQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Pop()}{Pop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}$<$ T $>$\+::Pop}
+
+Pop method, uses mutex lock to sleep the current thread until data are available on the queue. This may be used to synchonise and schedule threads. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Element on deque back 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBlockingQueue_a6b320feb628e94e01d51975ec93af656}\label{classBlockingQueue_a6b320feb628e94e01d51975ec93af656}} 
+\index{BlockingQueue$<$ T $>$@{BlockingQueue$<$ T $>$}!Push@{Push}}
+\index{Push@{Push}!BlockingQueue$<$ T $>$@{BlockingQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Push()}{Push()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}$<$ T $>$\+::Push (\begin{DoxyParamCaption}\item[{T}]{to\+Push }\end{DoxyParamCaption})}
+
+adds element to the queue. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em to\+Push} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBlockingQueue_aab57e39ee47d79c2f8c604a0a0239279}\label{classBlockingQueue_aab57e39ee47d79c2f8c604a0a0239279}} 
+\index{BlockingQueue$<$ T $>$@{BlockingQueue$<$ T $>$}!Size@{Size}}
+\index{Size@{Size}!BlockingQueue$<$ T $>$@{BlockingQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Size()}{Size()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+int \mbox{\hyperlink{classBlockingQueue}{Blocking\+Queue}}$<$ T $>$\+::Size}
+
+Gets the current length of elements in the queue. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+size of internal deque 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{BlockingQueue_8h}{Blocking\+Queue.\+h}}\item 
+src/\mbox{\hyperlink{BlockingQueue_8cpp}{Blocking\+Queue.\+cpp}}\end{DoxyCompactItemize}

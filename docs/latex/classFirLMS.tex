@@ -1,0 +1,79 @@
+\hypertarget{classFirLMS}{}\doxysection{Fir\+L\+MS Class Reference}
+\label{classFirLMS}\index{FirLMS@{FirLMS}}
+
+
+{\ttfamily \#include $<$Fir\+L\+M\+S.\+h$>$}
+
+
+
+Inheritance diagram for Fir\+L\+MS\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classFirLMS__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Fir\+L\+MS\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classFirLMS__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFirLMS_a8623e989dc5cf0345ed4fde76a464986}{Fir\+L\+MS}} (int nr\+Taps, double lrate)
+\item 
+double \mbox{\hyperlink{classFirLMS_acfb24070a8a6ed38ddef073c2ec64304}{Filter}} (double dirty\+Sample, double noise\+Sample) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFirLMS_a8623e989dc5cf0345ed4fde76a464986}\label{classFirLMS_a8623e989dc5cf0345ed4fde76a464986}} 
+\index{FirLMS@{FirLMS}!FirLMS@{FirLMS}}
+\index{FirLMS@{FirLMS}!FirLMS@{FirLMS}}
+\doxysubsubsection{\texorpdfstring{FirLMS()}{FirLMS()}}
+{\footnotesize\ttfamily Fir\+L\+M\+S\+::\+Fir\+L\+MS (\begin{DoxyParamCaption}\item[{int}]{nr\+Taps,  }\item[{double}]{lrate }\end{DoxyParamCaption})}
+
+Initialise the L\+MS F\+IR Filter, requires nr\+Taps and learning rate 
+\begin{DoxyParams}{Parameters}
+{\em nr\+Taps} & \\
+\hline
+{\em lrate} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFirLMS_acfb24070a8a6ed38ddef073c2ec64304}\label{classFirLMS_acfb24070a8a6ed38ddef073c2ec64304}} 
+\index{FirLMS@{FirLMS}!Filter@{Filter}}
+\index{Filter@{Filter}!FirLMS@{FirLMS}}
+\doxysubsubsection{\texorpdfstring{Filter()}{Filter()}}
+{\footnotesize\ttfamily double Fir\+L\+M\+S\+::\+Filter (\begin{DoxyParamCaption}\item[{double}]{dirty\+Sample,  }\item[{double}]{noise\+Sample }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Takes a dirty signal sample and a noise sample, returns filtered sample 
+\begin{DoxyParams}{Parameters}
+{\em dirty\+Sample} & \\
+\hline
+{\em noise\+Sample} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classNoiseFilter_af7eb0fd8ea4b9656379cdffa8d170ad7}{Noise\+Filter}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{FirLMS_8h}{Fir\+L\+M\+S.\+h}}\item 
+src/\mbox{\hyperlink{FirLMS_8cpp}{Fir\+L\+M\+S.\+cpp}}\end{DoxyCompactItemize}

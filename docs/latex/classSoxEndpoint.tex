@@ -1,0 +1,92 @@
+\hypertarget{classSoxEndpoint}{}\doxysection{Sox\+Endpoint Class Reference}
+\label{classSoxEndpoint}\index{SoxEndpoint@{SoxEndpoint}}
+
+
+{\ttfamily \#include $<$Sox\+Endpoint.\+h$>$}
+
+
+
+Inheritance diagram for Sox\+Endpoint\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{classSoxEndpoint__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Sox\+Endpoint\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{classSoxEndpoint__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classSoxEndpoint_a93a1c8eb93f619d6635473a088f8466b}{Open}} (int rate, int nchan, std\+::string globalopts, std\+::string fileopts, std\+::string filename, std\+::string effectopts)
+\item 
+void \mbox{\hyperlink{classSoxEndpoint_af859c9e18bcf1d060b7a5ff9bbcbb12c}{Next\+Sample}} (double s)
+\item 
+void \mbox{\hyperlink{classSoxEndpoint_af12daa12f17b343fb016db43272301b7}{Close}} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A pipeline element which allows samples to be piped into the SoX program, written to file or otherwise. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSoxEndpoint_af12daa12f17b343fb016db43272301b7}\label{classSoxEndpoint_af12daa12f17b343fb016db43272301b7}} 
+\index{SoxEndpoint@{SoxEndpoint}!Close@{Close}}
+\index{Close@{Close}!SoxEndpoint@{SoxEndpoint}}
+\doxysubsubsection{\texorpdfstring{Close()}{Close()}}
+{\footnotesize\ttfamily void Sox\+Endpoint\+::\+Close (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Close the output pipe if it exists \mbox{\Hypertarget{classSoxEndpoint_af859c9e18bcf1d060b7a5ff9bbcbb12c}\label{classSoxEndpoint_af859c9e18bcf1d060b7a5ff9bbcbb12c}} 
+\index{SoxEndpoint@{SoxEndpoint}!NextSample@{NextSample}}
+\index{NextSample@{NextSample}!SoxEndpoint@{SoxEndpoint}}
+\doxysubsubsection{\texorpdfstring{NextSample()}{NextSample()}}
+{\footnotesize\ttfamily void Sox\+Endpoint\+::\+Next\+Sample (\begin{DoxyParamCaption}\item[{double}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Adds the next sample to the output pipe 
+\begin{DoxyParams}{Parameters}
+{\em s} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classSampleCallback_aab0827e638e5dba214cebb90e3eb9fa1}{Sample\+Callback}}.
+
+\mbox{\Hypertarget{classSoxEndpoint_a93a1c8eb93f619d6635473a088f8466b}\label{classSoxEndpoint_a93a1c8eb93f619d6635473a088f8466b}} 
+\index{SoxEndpoint@{SoxEndpoint}!Open@{Open}}
+\index{Open@{Open}!SoxEndpoint@{SoxEndpoint}}
+\doxysubsubsection{\texorpdfstring{Open()}{Open()}}
+{\footnotesize\ttfamily bool Sox\+Endpoint\+::\+Open (\begin{DoxyParamCaption}\item[{int}]{srate,  }\item[{int}]{nchan,  }\item[{std\+::string}]{globalopts,  }\item[{std\+::string}]{fileopts,  }\item[{std\+::string}]{filename,  }\item[{std\+::string}]{effectopts }\end{DoxyParamCaption})}
+
+Open the SoX pipe 
+\begin{DoxyParams}{Parameters}
+{\em srate} & sample rate for pipe \\
+\hline
+{\em nchan} & nr of channels in filtered audio \\
+\hline
+{\em globalopts} & \\
+\hline
+{\em fileopts} & \\
+\hline
+{\em filename} & filename to pass to sox \\
+\hline
+{\em effectopts} & options for SoX effects \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if open sucessful, false otherwise 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{SoxEndpoint_8h}{Sox\+Endpoint.\+h}}\item 
+src/\mbox{\hyperlink{SoxEndpoint_8cpp}{Sox\+Endpoint.\+cpp}}\end{DoxyCompactItemize}
