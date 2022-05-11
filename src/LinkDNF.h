@@ -6,7 +6,7 @@
 #include "dnf.h"
 
 /*!
- * A pipeline component which extends NoiseFilter as an FIR Deep Neuronal Filter
+ * A pipeline component which extends NoiseFilter as a Deep Neuronal Filter. Inner workings described by Porr et al : https://arxiv.org/abs/2011.03466
  */
 class LinkDNF : public NoiseFilter{
 public:
