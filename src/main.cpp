@@ -4,7 +4,7 @@
 #include "SoxEndpoint.h"
 #include "SoxReader.h"
 #include "FirLMS.h"
-#include "FirDNF.h"
+#include "LinkDNF.h"
 #include "FilterInputSignal.h"
 #include "FilterInputNoise.h"
 
@@ -217,7 +217,7 @@ int main(int argc, char ** argv) {
     FilterInputSignal sigin;
     FilterInputNoise noisein;
     FirLMS flms(nt, lr);
-    FirDNF fdnf(nt, lr, rates[0]);
+    LinkDNF fdnf(nt, lr, rates[0]);
     NoiseFilter * filt;
     if(dnf) filt = &fdnf;
     else filt = &flms;
