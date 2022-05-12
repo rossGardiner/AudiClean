@@ -4,12 +4,12 @@
 <area shape="rect" id="node3" href="$NoiseFilter_8h.html" title=" " alt="" coords="461,155,588,181"/>
 <area shape="rect" id="node4" href="$FilterInputNoise_8h.html" title=" " alt="" coords="105,229,264,256"/>
 <area shape="rect" id="node7" href="$FilterInputSignal_8h.html" title=" " alt="" coords="289,229,451,256"/>
-<area shape="rect" id="node9" href="$FirDNF_8h.html" title=" " alt="" coords="475,229,574,256"/>
-<area shape="rect" id="node11" href="$FirLMS_8h.html" title=" " alt="" coords="598,229,697,256"/>
-<area shape="rect" id="node13" href="$NoiseFilter_8cpp.html" title=" " alt="" coords="721,229,862,256"/>
+<area shape="rect" id="node9" href="$FirLMS_8h.html" title=" " alt="" coords="475,229,574,256"/>
+<area shape="rect" id="node11" href="$LinkDNF_8h.html" title=" " alt="" coords="599,229,709,256"/>
+<area shape="rect" id="node13" href="$NoiseFilter_8cpp.html" title=" " alt="" coords="734,229,875,256"/>
 <area shape="rect" id="node5" href="$FilterInputNoise_8cpp.html" title=" " alt="" coords="5,304,180,331"/>
 <area shape="rect" id="node6" href="$main_8cpp.html" title=" " alt="" coords="405,304,511,331"/>
 <area shape="rect" id="node8" href="$FilterInputSignal_8cpp.html" title=" " alt="" coords="204,304,381,331"/>
-<area shape="rect" id="node10" href="$FirDNF_8cpp.html" title=" " alt="" coords="535,304,648,331"/>
-<area shape="rect" id="node12" href="$FirLMS_8cpp.html" title=" " alt="" coords="673,304,787,331"/>
+<area shape="rect" id="node10" href="$FirLMS_8cpp.html" title=" " alt="" coords="535,304,650,331"/>
+<area shape="rect" id="node12" href="$LinkDNF_8cpp.html" title=" " alt="" coords="674,304,799,331"/>
 </map>

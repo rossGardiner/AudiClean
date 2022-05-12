@@ -1,0 +1,84 @@
+\hypertarget{classLinkDNF}{}\doxysection{Link\+D\+NF Class Reference}
+\label{classLinkDNF}\index{LinkDNF@{LinkDNF}}
+
+
+{\ttfamily \#include $<$Link\+D\+N\+F.\+h$>$}
+
+
+
+Inheritance diagram for Link\+D\+NF\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classLinkDNF__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Link\+D\+NF\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classLinkDNF__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLinkDNF_a1259165d1d527033c662e6951b532bd1}{Link\+D\+NF}} (int nr\+Taps, double lrate, int sample\+Rate)
+\item 
+double \mbox{\hyperlink{classLinkDNF_a3f19876fe2766ad51738d8ae8c3800df}{Filter}} (double dirty\+Sample, double noise\+Sample) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A pipeline component which extends \mbox{\hyperlink{classNoiseFilter}{Noise\+Filter}} as a Deep Neuronal Filter. Inner workings described by Porr et al \+: \href{https://arxiv.org/abs/2011.03466}{\texttt{ https\+://arxiv.\+org/abs/2011.\+03466}} 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLinkDNF_a1259165d1d527033c662e6951b532bd1}\label{classLinkDNF_a1259165d1d527033c662e6951b532bd1}} 
+\index{LinkDNF@{LinkDNF}!LinkDNF@{LinkDNF}}
+\index{LinkDNF@{LinkDNF}!LinkDNF@{LinkDNF}}
+\doxysubsubsection{\texorpdfstring{LinkDNF()}{LinkDNF()}}
+{\footnotesize\ttfamily Link\+D\+N\+F\+::\+Link\+D\+NF (\begin{DoxyParamCaption}\item[{int}]{nr\+Taps,  }\item[{double}]{lrate,  }\item[{int}]{sample\+Rate }\end{DoxyParamCaption})}
+
+Initialise the D\+NF, requires nr taps, learning rate and audio samplerate. Learning rate is set for weights only, not biases. 
+\begin{DoxyParams}{Parameters}
+{\em nr\+Taps} & \\
+\hline
+{\em lrate} & \\
+\hline
+{\em sample\+Rate} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLinkDNF_a3f19876fe2766ad51738d8ae8c3800df}\label{classLinkDNF_a3f19876fe2766ad51738d8ae8c3800df}} 
+\index{LinkDNF@{LinkDNF}!Filter@{Filter}}
+\index{Filter@{Filter}!LinkDNF@{LinkDNF}}
+\doxysubsubsection{\texorpdfstring{Filter()}{Filter()}}
+{\footnotesize\ttfamily double Link\+D\+N\+F\+::\+Filter (\begin{DoxyParamCaption}\item[{double}]{dirty\+Sample,  }\item[{double}]{noise\+Sample }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Takes a dirty signal sample and a noise sample, returns filtered sample 
+\begin{DoxyParams}{Parameters}
+{\em dirty\+Sample} & \\
+\hline
+{\em noise\+Sample} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classNoiseFilter_af7eb0fd8ea4b9656379cdffa8d170ad7}{Noise\+Filter}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{LinkDNF_8h}{Link\+D\+N\+F.\+h}}\item 
+src/\mbox{\hyperlink{LinkDNF_8cpp}{Link\+D\+N\+F.\+cpp}}\end{DoxyCompactItemize}
