@@ -8,8 +8,9 @@
 class SampleLink : public SampleCallback {
 public:
    void RegisterCallback(SampleCallback* scb);
+   void NextSample(double next);
+
 protected:
-        void NextSample(double next);
         SampleCallback* sampleCallback = nullptr;
 };
 

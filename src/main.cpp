@@ -5,8 +5,12 @@
 #include "SoxReader.h"
 #include "FirLMS.h"
 #include "LinkDNF.h"
+#include "Plotter.h"
 #include "FilterInputSignal.h"
 #include "FilterInputNoise.h"
+
+#define CVUI_IMPLEMENTATION
+#include "cvui.h"
 
 static void prt_usage(char * exe) {
     fprintf(stderr, "Usage: %s [-D] [-l<lrate>] [-T<ntaps>] [<sox global options>] [<sox input options>]\n", exe);
@@ -213,6 +217,11 @@ int main(int argc, char ** argv) {
     SoxReader sigReader;
     SoxReader noiReader;
     
+    int w = 640;
+    int h = 480;
+    cv::Mat frame(cv::Size(w, h), CV_8UC3);
+    Plotter plotter(frame, 300, w, h);
+    
     
     FilterInputSignal sigin;
     FilterInputNoise noisein;
@@ -222,27 +231,38 @@ int main(int argc, char ** argv) {
     if(dnf) filt = &fdnf;
     else filt = &flms;
     
+    
+    
     sigReader.RegisterCallback(&sigin);
     noiReader.RegisterCallback(&noisein);
     sigin.RegisterCallback(filt);
     noisein.RegisterCallback(filt);
+    
+    
     
     SoxEndpoint endpoint;
     //SampleLink endpoint;
     /* N.B. not a typo -- should indeed be rates[0] despite others being indexed [2] */
     endpoint.Open(rates[0], nchans[2], globalopts, fileopts[2], paths[2], effectopts);
 
-    filt->RegisterCallback(&endpoint);
+    filt->RegisterCallback(&plotter);
+    plotter.RegisterCallback(&endpoint);
     threads[2] = filt->Start();
     
     threads[0] = sigReader.Start(rates[0], nchans[0], globalopts, fileopts[0], paths[0]);
     threads[1] = noiReader.Start(rates[1], nchans[1], globalopts, fileopts[1], paths[1]);
     
+    while(true) {
+        cv::imshow("window", frame);
+    }
+    cout << "hello\n";
     for(i = 0; i < 2; i++) if(threads[i]) threads[i]->join();
     
     filt->Stop();
     
     endpoint.Close();
+    
+    std::cin.get();
     return 0;
 }
 
