@@ -14,7 +14,13 @@ To make use of the DNF filter, you must also install the boost library:
  sudo apt-get install libboost-all-dev
 ```
 
-Both of these packages may be easily installed by running our `setup.sh` script:
+To use the plotting features, you need the opencv library:
+
+```
+sudo apt-get install libopencv-dev
+```
+
+All of these packages may be easily installed by running our `setup.sh` script:
 ```
 bash setup.sh
 ```
