@@ -214,46 +214,38 @@ int main(int argc, char ** argv) {
     if(!nchans[1]) nchans[1] = nchans[0];
     if(!nchans[2]) nchans[2] = nchans[0];
     
-
+    FirLMS flms(nt, lr);
+    LinkDNF fdnf(nt, lr, rates[0]);
+    NoiseFilter * filt;
+    if(dnf) filt = &fdnf;
+    else filt = &flms;
     SoxReader sigReader;
     SoxReader noiReader;
     
-    std::cout<<"here!\n";
     int w = 640;
     int h = 480;
     cvui::init(WINDOW1_NAME);
     cv::Mat frame = cv::Mat(cv::Size(w, h), CV_8UC3);
     
-    std::cout << "here also\n";
     Plotter plotter_samples(frame, 1000, w, h, 60);
     cv::Mat frame2 = cv::Mat(cv::Size(w, h), CV_8UC3);
     
     Plotter plotter_weights(frame2, 1000, w, h, 60);
-    
-    
-    
     FilterInputSignal sigin;
     FilterInputNoise noisein;
-    FirLMS flms(nt, lr);
-    LinkDNF fdnf(100, lr, rates[0]);
-    NoiseFilter * filt;
-    if(dnf) filt = &fdnf;
-    else filt = &flms;
-    
-    
     
     sigReader.RegisterCallback(&sigin);
     noiReader.RegisterCallback(&noisein);
     sigin.RegisterCallback(filt);
     noisein.RegisterCallback(filt);
     
-    
-    
     SoxEndpoint endpoint;
-    //SampleLink endpoint;
     /* N.B. not a typo -- should indeed be rates[0] despite others being indexed [2] */
     endpoint.Open(rates[0], nchans[2], globalopts, fileopts[2], paths[2], effectopts);
-
+    
+    if(dnf){
+        fdnf.RegisterWeightDistCallback(&plotter_weights);
+    }
     filt->RegisterCallback(&plotter_samples);
     plotter_samples.RegisterCallback(&endpoint);
     threads[2] = filt->Start();

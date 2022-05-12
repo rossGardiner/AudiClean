@@ -16,8 +16,8 @@ public:
     void RegisterWeightDistCallback(SampleCallback* weightCallback);
 private:
     DNF* internal_DNF;
-    SampleCallback* callback_remover;
-    SampleCallback* callback_weights;
+    SampleCallback* callback_remover = nullptr;
+    SampleCallback* callback_weights = nullptr;
 };
 
 
