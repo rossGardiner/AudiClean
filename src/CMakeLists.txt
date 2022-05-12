@@ -8,6 +8,7 @@ find_package(Boost REQUIRED)
 message("Boost found: ${Boost_FOUND}")
 
 add_subdirectory(deepNeuronalFilter)
+add_subdirectory(cvui)
 include_directories(deepNeuronalFilter)
 link_directories(deepNeuronalFilter)
 
