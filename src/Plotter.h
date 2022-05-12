@@ -11,6 +11,7 @@ class Plotter : public SampleLink{
 public:
     void NextSample(double next);
     Plotter(std::string _winname, int _bsize, int _w, int _h, double _framerate_fps);
+    void Init();
     void Show();
 private:
     std::string window_name;

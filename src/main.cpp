@@ -17,7 +17,7 @@
 
 
 static void prt_usage(char * exe) {
-    fprintf(stderr, "Usage: %s [-D] [-l<lrate>] [-T<ntaps>] [-P] [<sox global options>] [<sox input options>]\n", exe);
+    fprintf(stderr, "Usage: %s [-D] [-l<lrate>] [-T<ntaps>] [-p] [<sox global options>] [<sox input options>]\n", exe);
     fprintf(stderr, "\t<input file> [<sox noiseref options>] <noise file> [sox output options] <output file>\n\n");
 }
 
@@ -44,6 +44,8 @@ int main(int argc, char ** argv) {
         } else switch(argv[i][1]) {
             case '\0':
             case 'p':
+                plot = true;
+                break;
             case 'd':
             case 'n':
                 if(pcnt > 2) goto error;
@@ -52,7 +54,7 @@ int main(int argc, char ** argv) {
             case 'h':
                 prt_usage(argv[0]);
                 fprintf(stderr, "The -D option causes a DNF filter rather than a single-layer LMS filter to be used.\n");
-                fprintf(stderr, "The -P option plots filter signals in dynamic pop-up windows.\n");
+                fprintf(stderr, "The -p option plots filter signals in dynamic pop-up windows.\n");
                 fprintf(stderr, "The -l and -T options control the filter parameters.\n");
                 fprintf(stderr, "Standard 'sox' options may be used directly in their short form. File options will\n");
                 fprintf(stderr, "apply to the following input file, just as they would in a normal sox invocation.\n");
@@ -242,19 +244,36 @@ int main(int argc, char ** argv) {
     /* N.B. not a typo -- should indeed be rates[0] despite others being indexed [2] */
     endpoint.Open(rates[0], nchans[2], globalopts, fileopts[2], paths[2], effectopts);
     
-    if(dnf){
-        fdnf.RegisterWeightDistCallback(&plotter_weights);
+    if(plot){
+        if(dnf){
+            plotter_weights.Init();
+            fdnf.RegisterWeightDistCallback(&plotter_weights);
+            plotter_remover.Init();
+            fdnf.RegisterRemoverCallback(&plotter_remover);
+        }
+        else{
+            plotter_remover.Init();
+            flms.RegisterRemoverCallback(&plotter_remover);
+        }
+        plotter_samples.Init();
+        filt->RegisterCallback(&plotter_samples);
+        plotter_samples.RegisterCallback(&endpoint);
     }
-    filt->RegisterCallback(&plotter_samples);
-    plotter_samples.RegisterCallback(&endpoint);
+    else{
+        filt->RegisterCallback(&endpoint);
+    }
+    
     threads[2] = filt->Start();
     
     threads[0] = sigReader.Start(rates[0], nchans[0], globalopts, fileopts[0], paths[0]);
     threads[1] = noiReader.Start(rates[1], nchans[1], globalopts, fileopts[1], paths[1]);
     
-    while(true){
+    while(plot){
        plotter_samples.Show();
-       plotter_weights.Show();
+       plotter_remover.Show();
+       if(dnf) {
+           plotter_weights.Show();
+       }
     
         if(cv::waitKey(1) == 27) {
             break;

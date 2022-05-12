@@ -17,6 +17,10 @@ void Plotter::NextSample(double next){
     
 }
 
+void Plotter::Init() {
+    cvui::init(window_name);
+}
+
 Plotter::Plotter(std::string _winname, int _bsize, int _w, int _h, double _framerate_fps){
     window_name = _winname;
     frame = cv::Mat(cv::Size(_w, _h), CV_8UC3);
@@ -25,7 +29,6 @@ Plotter::Plotter(std::string _winname, int _bsize, int _w, int _h, double _frame
     bsize = _bsize;
     cb = new boost::circular_buffer<double>(_bsize);
     framerate_fps = _framerate_fps;
-    cvui::init(window_name);
 }
 
 void Plotter::Show() {

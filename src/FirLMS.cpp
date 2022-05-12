@@ -18,7 +18,12 @@ FirLMS::FirLMS(int nrTaps, double lrate){
  */
 double FirLMS::Filter(double dirtySample, double noiseSample) {
     double canceller = internalLMS->filter(noiseSample);
+    if(removerCallback) removerCallback->NextSample(canceller);
     double outputSignal = dirtySample - canceller;
     internalLMS->lms_update(outputSignal);
     return outputSignal;
+}
+
+void FirLMS::RegisterRemoverCallback(SampleCallback* _removerCallBack){
+    removerCallback = _removerCallBack;
 }
