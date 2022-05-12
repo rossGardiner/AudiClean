@@ -11,10 +11,13 @@
 
 #define CVUI_IMPLEMENTATION
 #include "cvui.h"
-#define WINDOW1_NAME "Window 1"
+
+#define W 640
+#define H 480
+
 
 static void prt_usage(char * exe) {
-    fprintf(stderr, "Usage: %s [-D] [-l<lrate>] [-T<ntaps>] [<sox global options>] [<sox input options>]\n", exe);
+    fprintf(stderr, "Usage: %s [-D] [-l<lrate>] [-T<ntaps>] [-P] [<sox global options>] [<sox input options>]\n", exe);
     fprintf(stderr, "\t<input file> [<sox noiseref options>] <noise file> [sox output options] <output file>\n\n");
 }
 
@@ -32,6 +35,7 @@ int main(int argc, char ** argv) {
     double lr = 0.001;
     int nt = 100;
     bool dnf = false;
+    bool plot = false;
 
     for(i = 1; i < argc; i++) {
         if(argv[i][0] != '-') {
@@ -48,6 +52,7 @@ int main(int argc, char ** argv) {
             case 'h':
                 prt_usage(argv[0]);
                 fprintf(stderr, "The -D option causes a DNF filter rather than a single-layer LMS filter to be used.\n");
+                fprintf(stderr, "The -P option plots filter signals in dynamic pop-up windows.\n");
                 fprintf(stderr, "The -l and -T options control the filter parameters.\n");
                 fprintf(stderr, "Standard 'sox' options may be used directly in their short form. File options will\n");
                 fprintf(stderr, "apply to the following input file, just as they would in a normal sox invocation.\n");
@@ -221,16 +226,10 @@ int main(int argc, char ** argv) {
     else filt = &flms;
     SoxReader sigReader;
     SoxReader noiReader;
+    Plotter plotter_samples("Filter Output", 1000, W, H, 60);
+    Plotter plotter_weights("Weight Distance", 1000, W, H, 60);
+    Plotter plotter_remover("Remover", 1000, W, H, 60);
     
-    int w = 640;
-    int h = 480;
-    cvui::init(WINDOW1_NAME);
-    cv::Mat frame = cv::Mat(cv::Size(w, h), CV_8UC3);
-    
-    Plotter plotter_samples(frame, 1000, w, h, 60);
-    cv::Mat frame2 = cv::Mat(cv::Size(w, h), CV_8UC3);
-    
-    Plotter plotter_weights(frame2, 1000, w, h, 60);
     FilterInputSignal sigin;
     FilterInputNoise noisein;
     
@@ -254,8 +253,8 @@ int main(int argc, char ** argv) {
     threads[1] = noiReader.Start(rates[1], nchans[1], globalopts, fileopts[1], paths[1]);
     
     while(true){
-        cv::imshow(WINDOW1_NAME, frame);
-        cv::imshow("Window 2", frame2);
+       plotter_samples.Show();
+       plotter_weights.Show();
     
         if(cv::waitKey(1) == 27) {
             break;
