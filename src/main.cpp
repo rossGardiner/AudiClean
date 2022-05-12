@@ -11,6 +11,7 @@
 
 #define CVUI_IMPLEMENTATION
 #include "cvui.h"
+#define WINDOW1_NAME "Window 1"
 
 static void prt_usage(char * exe) {
     fprintf(stderr, "Usage: %s [-D] [-l<lrate>] [-T<ntaps>] [<sox global options>] [<sox input options>]\n", exe);
@@ -217,16 +218,24 @@ int main(int argc, char ** argv) {
     SoxReader sigReader;
     SoxReader noiReader;
     
+    std::cout<<"here!\n";
     int w = 640;
     int h = 480;
-    cv::Mat frame(cv::Size(w, h), CV_8UC3);
-    Plotter plotter(frame, 300, w, h);
+    cvui::init(WINDOW1_NAME);
+    cv::Mat frame = cv::Mat(cv::Size(w, h), CV_8UC3);
+    
+    std::cout << "here also\n";
+    Plotter plotter_samples(frame, 1000, w, h, 60);
+    cv::Mat frame2 = cv::Mat(cv::Size(w, h), CV_8UC3);
+    
+    Plotter plotter_weights(frame2, 1000, w, h, 60);
+    
     
     
     FilterInputSignal sigin;
     FilterInputNoise noisein;
     FirLMS flms(nt, lr);
-    LinkDNF fdnf(nt, lr, rates[0]);
+    LinkDNF fdnf(100, lr, rates[0]);
     NoiseFilter * filt;
     if(dnf) filt = &fdnf;
     else filt = &flms;
@@ -245,24 +254,27 @@ int main(int argc, char ** argv) {
     /* N.B. not a typo -- should indeed be rates[0] despite others being indexed [2] */
     endpoint.Open(rates[0], nchans[2], globalopts, fileopts[2], paths[2], effectopts);
 
-    filt->RegisterCallback(&plotter);
-    plotter.RegisterCallback(&endpoint);
+    filt->RegisterCallback(&plotter_samples);
+    plotter_samples.RegisterCallback(&endpoint);
     threads[2] = filt->Start();
     
     threads[0] = sigReader.Start(rates[0], nchans[0], globalopts, fileopts[0], paths[0]);
     threads[1] = noiReader.Start(rates[1], nchans[1], globalopts, fileopts[1], paths[1]);
     
-    while(true) {
-        cv::imshow("window", frame);
+    while(true){
+        cv::imshow(WINDOW1_NAME, frame);
+        cv::imshow("Window 2", frame2);
+    
+        if(cv::waitKey(1) == 27) {
+            break;
+        }
     }
-    cout << "hello\n";
+    
     for(i = 0; i < 2; i++) if(threads[i]) threads[i]->join();
     
     filt->Stop();
     
     endpoint.Close();
-    
-    std::cin.get();
     return 0;
 }
 

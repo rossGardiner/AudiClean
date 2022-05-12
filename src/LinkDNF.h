@@ -12,8 +12,12 @@ class LinkDNF : public NoiseFilter{
 public:
     LinkDNF(int nrTaps, double lrate, int sampleRate);
     double Filter(double dirtySample, double noiseSample) override;
+    void RegisterRemoverCallback(SampleCallback* removerCallback);
+    void RegisterWeightDistCallback(SampleCallback* weightCallback);
 private:
     DNF* internal_DNF;
+    SampleCallback* callback_remover;
+    SampleCallback* callback_weights;
 };
 
 

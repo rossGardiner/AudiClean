@@ -1913,7 +1913,6 @@ namespace cvui
             double aMin, aMax;
             cv::Rect aRect(theX, theY, theWidth, theHeight);
             std::vector<double>::size_type aHowManyValues = theValues.size();
-
             if (aHowManyValues >= 2) {
                 internal::findMinMax(theValues, &aMin, &aMax);
                 render::sparkline(theBlock, theValues, aRect, aMin, aMax, theColor);
