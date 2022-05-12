@@ -2,17 +2,22 @@
 #include <stdlib.h>
 #include <chrono>
 #include <thread>
+#include <algorithm>
 
 void Plotter::NextSample(double next){
     cb->push_back(next);
     if(cb->size() >= 2) {
         std::vector<double> v(cb->begin(), cb->end());
+        double min = *min_element(v.begin(), v.end());
+        double max = *max_element(v.begin(), v.end());
         frame = cv::Scalar(0, 0, 0);
-        cvui::sparkline(frame, v, 0, 0, w, h, 0xffffff);
+        cvui::sparkline(frame, v, 0, textdepth_y, w-margin, h-textdepth_y);
+        cvui::printf(   frame, margin, margin, "min: %+.5lf max: %+.5lf buff_sz:%d sample: %d", min, max, v.size(), n);
         cvui::update();
         int timespan = (int)((1.0/framerate_fps) * 1000);
         std::this_thread::sleep_for(std::chrono::milliseconds(timespan));
     }
+    n++;
     if(sampleCallback) sampleCallback->NextSample(next);
     
 }

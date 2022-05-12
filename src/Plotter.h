@@ -19,6 +19,9 @@ private:
     int w = 0; int h = 0;
     boost::circular_buffer<double>* cb;
     int bsize = 2;
+    int textdepth_y = 20;
+    int margin = 5;
+    int n = 0;
     double framerate_fps = 0.2;
 };
 
