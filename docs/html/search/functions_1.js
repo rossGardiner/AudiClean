@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['close_111',['Close',['../classSoxEndpoint.html#af12daa12f17b343fb016db43272301b7',1,'SoxEndpoint']]]
+  ['blockingqueue_125',['BlockingQueue',['../classBlockingQueue.html#a411c165bb6e00bb6414f4a7b6253eb4a',1,'BlockingQueue']]]
 ];

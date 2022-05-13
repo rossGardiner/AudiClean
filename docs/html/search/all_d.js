@@ -1,4 +1,22 @@
 var searchData=
 [
-  ['zerocoeff_73',['zeroCoeff',['../classFir1.html#add6c80346d4fec6e9a270df55f604456',1,'Fir1']]]
+  ['samplecallback_63',['SampleCallback',['../classSampleCallback.html',1,'SampleCallback'],['../classSampleLink.html#aab5e41ba515a75d2cab815e3ceeb5e37',1,'SampleLink::sampleCallback()']]],
+  ['samplecallback_2eh_64',['SampleCallback.h',['../SampleCallback_8h.html',1,'']]],
+  ['samplelink_65',['SampleLink',['../classSampleLink.html',1,'']]],
+  ['samplelink_2ecpp_66',['SampleLink.cpp',['../SampleLink_8cpp.html',1,'']]],
+  ['samplelink_2eh_67',['SampleLink.h',['../SampleLink_8h.html',1,'']]],
+  ['set_68',['set',['../CMakeLists_8txt.html#a11ea63637b3c71eab22ed3d4abf0d8ea',1,'CMakeLists.txt']]],
+  ['setlearningrate_69',['setLearningRate',['../classFir1.html#ae974af5d0263423334fe9ad916a666a2',1,'Fir1']]],
+  ['seton_70',['SetOn',['../classNoiseFilter.html#a155394b14332750e2bd5abac9e0200d6',1,'NoiseFilter::SetOn()'],['../classSoxReader.html#af2d8da3ef06f8869757108da9740f25d',1,'SoxReader::SetOn()']]],
+  ['show_71',['Show',['../classPlotter.html#af113de9179a98bd874e3625667ee0365',1,'Plotter']]],
+  ['signalsamples_72',['signalSamples',['../classNoiseFilter.html#a7dc53f5a491a20e661c570f9981d24c2',1,'NoiseFilter']]],
+  ['size_73',['Size',['../classBlockingQueue.html#aab57e39ee47d79c2f8c604a0a0239279',1,'BlockingQueue']]],
+  ['soxendpoint_74',['SoxEndpoint',['../classSoxEndpoint.html',1,'']]],
+  ['soxendpoint_2ecpp_75',['SoxEndpoint.cpp',['../SoxEndpoint_8cpp.html',1,'']]],
+  ['soxendpoint_2eh_76',['SoxEndpoint.h',['../SoxEndpoint_8h.html',1,'']]],
+  ['soxreader_77',['SoxReader',['../classSoxReader.html',1,'']]],
+  ['soxreader_2ecpp_78',['SoxReader.cpp',['../SoxReader_8cpp.html',1,'']]],
+  ['soxreader_2eh_79',['SoxReader.h',['../SoxReader_8h.html',1,'']]],
+  ['start_80',['Start',['../classNoiseFilter.html#a73ba8fe000fa4d7caa156c5603d27b66',1,'NoiseFilter::Start()'],['../classSoxReader.html#aa22b6518291a276dc1b1d07f0a4bedbb',1,'SoxReader::Start()']]],
+  ['stop_81',['Stop',['../classNoiseFilter.html#a507d1a606563fdd245ec93310842518a',1,'NoiseFilter']]]
 ];

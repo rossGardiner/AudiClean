@@ -30,6 +30,10 @@ Collaboration diagram for Link\+D\+NF\+:
 \mbox{\hyperlink{classLinkDNF_a1259165d1d527033c662e6951b532bd1}{Link\+D\+NF}} (int nr\+Taps, double lrate, int sample\+Rate)
 \item 
 double \mbox{\hyperlink{classLinkDNF_a3f19876fe2766ad51738d8ae8c3800df}{Filter}} (double dirty\+Sample, double noise\+Sample) override
+\item 
+void \mbox{\hyperlink{classLinkDNF_a4a044deaca104500b69e55eeb183daa6}{Register\+Remover\+Callback}} (\mbox{\hyperlink{classSampleCallback}{Sample\+Callback}} $\ast$remover\+Callback)
+\item 
+void \mbox{\hyperlink{classLinkDNF_a419fa19172f6eac4c8d1125f78389741}{Register\+Weight\+Dist\+Callback}} (\mbox{\hyperlink{classSampleCallback}{Sample\+Callback}} $\ast$weight\+Callback)
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
@@ -62,7 +66,7 @@ Initialise the D\+NF, requires nr taps, learning rate and audio samplerate. Lear
 \doxysubsubsection{\texorpdfstring{Filter()}{Filter()}}
 {\footnotesize\ttfamily double Link\+D\+N\+F\+::\+Filter (\begin{DoxyParamCaption}\item[{double}]{dirty\+Sample,  }\item[{double}]{noise\+Sample }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-Takes a dirty signal sample and a noise sample, returns filtered sample 
+Takes a dirty signal sample and a noise sample, returns filtered sample. If remover and weight callbacks are registered, pass data from D\+NF internals 
 \begin{DoxyParams}{Parameters}
 {\em dirty\+Sample} & \\
 \hline
@@ -75,6 +79,18 @@ Takes a dirty signal sample and a noise sample, returns filtered sample
 
 
 Implements \mbox{\hyperlink{classNoiseFilter_af7eb0fd8ea4b9656379cdffa8d170ad7}{Noise\+Filter}}.
+
+\mbox{\Hypertarget{classLinkDNF_a4a044deaca104500b69e55eeb183daa6}\label{classLinkDNF_a4a044deaca104500b69e55eeb183daa6}} 
+\index{LinkDNF@{LinkDNF}!RegisterRemoverCallback@{RegisterRemoverCallback}}
+\index{RegisterRemoverCallback@{RegisterRemoverCallback}!LinkDNF@{LinkDNF}}
+\doxysubsubsection{\texorpdfstring{RegisterRemoverCallback()}{RegisterRemoverCallback()}}
+{\footnotesize\ttfamily void Link\+D\+N\+F\+::\+Register\+Remover\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSampleCallback}{Sample\+Callback}} $\ast$}]{remover\+Callback }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLinkDNF_a419fa19172f6eac4c8d1125f78389741}\label{classLinkDNF_a419fa19172f6eac4c8d1125f78389741}} 
+\index{LinkDNF@{LinkDNF}!RegisterWeightDistCallback@{RegisterWeightDistCallback}}
+\index{RegisterWeightDistCallback@{RegisterWeightDistCallback}!LinkDNF@{LinkDNF}}
+\doxysubsubsection{\texorpdfstring{RegisterWeightDistCallback()}{RegisterWeightDistCallback()}}
+{\footnotesize\ttfamily void Link\+D\+N\+F\+::\+Register\+Weight\+Dist\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSampleCallback}{Sample\+Callback}} $\ast$}]{weight\+Callback }\end{DoxyParamCaption})}
 
 
 

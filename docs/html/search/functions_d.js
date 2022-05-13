@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7efir1_147',['~Fir1',['../classFir1.html#a86233a005b6a50a461169ff262825970',1,'Fir1']]]
+  ['zerocoeff_166',['zeroCoeff',['../classFir1.html#add6c80346d4fec6e9a270df55f604456',1,'Fir1']]]
 ];

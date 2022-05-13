@@ -6,7 +6,8 @@
 
 
 
-Inheritance diagram for Fir\+L\+MS\+:\nopagebreak
+Inheritance diagram for Fir\+L\+MS\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,7 +16,8 @@ Inheritance diagram for Fir\+L\+MS\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Fir\+L\+MS\+:\nopagebreak
+Collaboration diagram for Fir\+L\+MS\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -28,6 +30,8 @@ Collaboration diagram for Fir\+L\+MS\+:\nopagebreak
 \mbox{\hyperlink{classFirLMS_a8623e989dc5cf0345ed4fde76a464986}{Fir\+L\+MS}} (int nr\+Taps, double lrate)
 \item 
 double \mbox{\hyperlink{classFirLMS_acfb24070a8a6ed38ddef073c2ec64304}{Filter}} (double dirty\+Sample, double noise\+Sample) override
+\item 
+void \mbox{\hyperlink{classFirLMS_a8103bd163d5c967a2bd9adfc3646d930}{Register\+Remover\+Callback}} (\mbox{\hyperlink{classSampleCallback}{Sample\+Callback}} $\ast$\+\_\+remover\+Call\+Back)
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
@@ -68,6 +72,12 @@ Takes a dirty signal sample and a noise sample, returns filtered sample
 
 
 Implements \mbox{\hyperlink{classNoiseFilter_af7eb0fd8ea4b9656379cdffa8d170ad7}{Noise\+Filter}}.
+
+\mbox{\Hypertarget{classFirLMS_a8103bd163d5c967a2bd9adfc3646d930}\label{classFirLMS_a8103bd163d5c967a2bd9adfc3646d930}} 
+\index{FirLMS@{FirLMS}!RegisterRemoverCallback@{RegisterRemoverCallback}}
+\index{RegisterRemoverCallback@{RegisterRemoverCallback}!FirLMS@{FirLMS}}
+\doxysubsubsection{\texorpdfstring{RegisterRemoverCallback()}{RegisterRemoverCallback()}}
+{\footnotesize\ttfamily void Fir\+L\+M\+S\+::\+Register\+Remover\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSampleCallback}{Sample\+Callback}} $\ast$}]{\+\_\+remover\+Call\+Back }\end{DoxyParamCaption})}
 
 
 

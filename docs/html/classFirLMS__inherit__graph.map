@@ -1,6 +1,6 @@
 <map id="FirLMS" name="FirLMS">
-<area shape="rect" id="node1" title=" " alt="" coords="44,543,133,635"/>
-<area shape="rect" id="node2" href="$classNoiseFilter.html" title=" " alt="" coords="5,271,172,495"/>
-<area shape="rect" id="node3" href="$classSampleLink.html" title=" " alt="" coords="10,131,167,223"/>
-<area shape="rect" id="node4" href="$classSampleCallback.html" title=" " alt="" coords="25,5,152,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,543,221,649"/>
+<area shape="rect" id="node2" href="$classNoiseFilter.html" title=" " alt="" coords="30,271,197,495"/>
+<area shape="rect" id="node3" href="$classSampleLink.html" title=" " alt="" coords="35,131,192,223"/>
+<area shape="rect" id="node4" href="$classSampleCallback.html" title=" " alt="" coords="50,5,177,83"/>
 </map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['noisefilter_82',['NoiseFilter',['../classNoiseFilter.html',1,'']]]
+  ['noisefilter_93',['NoiseFilter',['../classNoiseFilter.html',1,'']]]
 ];

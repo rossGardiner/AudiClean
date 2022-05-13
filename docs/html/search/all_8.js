@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['open_47',['Open',['../classSoxEndpoint.html#a93a1c8eb93f619d6635473a088f8466b',1,'SoxEndpoint::Open()'],['../classSoxReader.html#af246cd4b48e4d7db81cd6e0b579e0b47',1,'SoxReader::Open()']]]
+  ['main_41',['main',['../main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main.cpp']]],
+  ['main_2ecpp_42',['main.cpp',['../main_8cpp.html',1,'']]]
 ];

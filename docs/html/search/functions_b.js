@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['set_140',['set',['../CMakeLists_8txt.html#ab1a27078acc8ee4b3fc1379030e4b277',1,'CMakeLists.txt']]],
-  ['setlearningrate_141',['setLearningRate',['../classFir1.html#ae974af5d0263423334fe9ad916a666a2',1,'Fir1']]],
-  ['seton_142',['SetOn',['../classNoiseFilter.html#a155394b14332750e2bd5abac9e0200d6',1,'NoiseFilter::SetOn()'],['../classSoxReader.html#af2d8da3ef06f8869757108da9740f25d',1,'SoxReader::SetOn()']]],
-  ['size_143',['Size',['../classBlockingQueue.html#aab57e39ee47d79c2f8c604a0a0239279',1,'BlockingQueue']]],
-  ['start_144',['Start',['../classNoiseFilter.html#a73ba8fe000fa4d7caa156c5603d27b66',1,'NoiseFilter::Start()'],['../classSoxReader.html#aa22b6518291a276dc1b1d07f0a4bedbb',1,'SoxReader::Start()']]],
-  ['stop_145',['Stop',['../classNoiseFilter.html#a507d1a606563fdd245ec93310842518a',1,'NoiseFilter']]]
+  ['registercallback_153',['RegisterCallback',['../classFilterInputNoise.html#a0bbdb35f4a79138aa74ef7f88c64000a',1,'FilterInputNoise::RegisterCallback()'],['../classFilterInputSignal.html#a3f52d4845a1a93a9c0869257f1453468',1,'FilterInputSignal::RegisterCallback()'],['../classSampleLink.html#aed77c94ac60ada5ef05ead67846654f6',1,'SampleLink::RegisterCallback()']]],
+  ['registerremovercallback_154',['RegisterRemoverCallback',['../classFirLMS.html#a8103bd163d5c967a2bd9adfc3646d930',1,'FirLMS::RegisterRemoverCallback()'],['../classLinkDNF.html#a4a044deaca104500b69e55eeb183daa6',1,'LinkDNF::RegisterRemoverCallback()']]],
+  ['registerweightdistcallback_155',['RegisterWeightDistCallback',['../classLinkDNF.html#a419fa19172f6eac4c8d1125f78389741',1,'LinkDNF']]],
+  ['reset_156',['reset',['../classFir1.html#a3516709a67439e6fa1ecd3aac42fd719',1,'Fir1']]],
+  ['run_157',['Run',['../classSoxReader.html#af6b8fbad7b07f9654cf256c879ac5c69',1,'SoxReader']]],
+  ['runfilter_158',['RunFilter',['../classNoiseFilter.html#a07193360e2df02a1387726bb66660d52',1,'NoiseFilter']]]
 ];

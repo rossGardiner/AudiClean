@@ -80,17 +80,24 @@ $(function() {
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classLinkDNF.html#a1259165d1d527033c662e6951b532bd1">LinkDNF</a>(<span class="keywordtype">int</span> nrTaps, <span class="keywordtype">double</span> lrate, <span class="keywordtype">int</span> sampleRate);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classLinkDNF.html#a3f19876fe2766ad51738d8ae8c3800df">Filter</a>(<span class="keywordtype">double</span> dirtySample, <span class="keywordtype">double</span> noiseSample) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    DNF* internal_DNF;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif //AUDICLEAN_FIRDNF_H</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classLinkDNF.html#a4a044deaca104500b69e55eeb183daa6">RegisterRemoverCallback</a>(<a class="code" href="classSampleCallback.html">SampleCallback</a>* removerCallback);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classLinkDNF.html#a419fa19172f6eac4c8d1125f78389741">RegisterWeightDistCallback</a>(<a class="code" href="classSampleCallback.html">SampleCallback</a>* weightCallback);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    DNF* internal_DNF;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classSampleCallback.html">SampleCallback</a>* callback_remover = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classSampleCallback.html">SampleCallback</a>* callback_weights = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif //AUDICLEAN_FIRDNF_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aNoiseFilter_8h_html"><div class="ttname"><a href="NoiseFilter_8h.html">NoiseFilter.h</a></div></div>
 <div class="ttc" id="aclassLinkDNF_html_a1259165d1d527033c662e6951b532bd1"><div class="ttname"><a href="classLinkDNF.html#a1259165d1d527033c662e6951b532bd1">LinkDNF::LinkDNF</a></div><div class="ttdeci">LinkDNF(int nrTaps, double lrate, int sampleRate)</div><div class="ttdef"><b>Definition:</b> LinkDNF.cpp:11</div></div>
 <div class="ttc" id="aclassLinkDNF_html"><div class="ttname"><a href="classLinkDNF.html">LinkDNF</a></div><div class="ttdef"><b>Definition:</b> LinkDNF.h:11</div></div>
+<div class="ttc" id="aclassLinkDNF_html_a4a044deaca104500b69e55eeb183daa6"><div class="ttname"><a href="classLinkDNF.html#a4a044deaca104500b69e55eeb183daa6">LinkDNF::RegisterRemoverCallback</a></div><div class="ttdeci">void RegisterRemoverCallback(SampleCallback *removerCallback)</div><div class="ttdef"><b>Definition:</b> LinkDNF.cpp:28</div></div>
 <div class="ttc" id="aclassLinkDNF_html_a3f19876fe2766ad51738d8ae8c3800df"><div class="ttname"><a href="classLinkDNF.html#a3f19876fe2766ad51738d8ae8c3800df">LinkDNF::Filter</a></div><div class="ttdeci">double Filter(double dirtySample, double noiseSample) override</div><div class="ttdef"><b>Definition:</b> LinkDNF.cpp:21</div></div>
+<div class="ttc" id="aclassLinkDNF_html_a419fa19172f6eac4c8d1125f78389741"><div class="ttname"><a href="classLinkDNF.html#a419fa19172f6eac4c8d1125f78389741">LinkDNF::RegisterWeightDistCallback</a></div><div class="ttdeci">void RegisterWeightDistCallback(SampleCallback *weightCallback)</div><div class="ttdef"><b>Definition:</b> LinkDNF.cpp:32</div></div>
+<div class="ttc" id="aclassSampleCallback_html"><div class="ttname"><a href="classSampleCallback.html">SampleCallback</a></div><div class="ttdef"><b>Definition:</b> SampleCallback.h:7</div></div>
 <div class="ttc" id="aclassNoiseFilter_html"><div class="ttname"><a href="classNoiseFilter.html">NoiseFilter</a></div><div class="ttdef"><b>Definition:</b> NoiseFilter.h:20</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

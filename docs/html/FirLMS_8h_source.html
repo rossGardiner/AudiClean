@@ -82,19 +82,23 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classFirLMS.html#a8623e989dc5cf0345ed4fde76a464986">FirLMS</a>(<span class="keywordtype">int</span> nrTaps, <span class="keywordtype">double</span> lrate);</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classFirLMS.html#acfb24070a8a6ed38ddef073c2ec64304">Filter</a>(<span class="keywordtype">double</span> dirtySample, <span class="keywordtype">double</span> noiseSample) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classFir1.html">Fir1</a>* internalLMS;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif //AUDICLEAN_FILTERLMS_H</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFirLMS.html#a8103bd163d5c967a2bd9adfc3646d930">RegisterRemoverCallback</a>(<a class="code" href="classSampleCallback.html">SampleCallback</a>* _removerCallBack);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classFir1.html">Fir1</a>* internalLMS;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classSampleCallback.html">SampleCallback</a>* removerCallback = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif //AUDICLEAN_FILTERLMS_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aFir1_8h_html"><div class="ttname"><a href="Fir1_8h.html">Fir1.h</a></div></div>
 <div class="ttc" id="aclassFirLMS_html_a8623e989dc5cf0345ed4fde76a464986"><div class="ttname"><a href="classFirLMS.html#a8623e989dc5cf0345ed4fde76a464986">FirLMS::FirLMS</a></div><div class="ttdeci">FirLMS(int nrTaps, double lrate)</div><div class="ttdef"><b>Definition:</b> FirLMS.cpp:8</div></div>
 <div class="ttc" id="aNoiseFilter_8h_html"><div class="ttname"><a href="NoiseFilter_8h.html">NoiseFilter.h</a></div></div>
+<div class="ttc" id="aclassFirLMS_html_a8103bd163d5c967a2bd9adfc3646d930"><div class="ttname"><a href="classFirLMS.html#a8103bd163d5c967a2bd9adfc3646d930">FirLMS::RegisterRemoverCallback</a></div><div class="ttdeci">void RegisterRemoverCallback(SampleCallback *_removerCallBack)</div><div class="ttdef"><b>Definition:</b> FirLMS.cpp:27</div></div>
 <div class="ttc" id="aclassFirLMS_html_acfb24070a8a6ed38ddef073c2ec64304"><div class="ttname"><a href="classFirLMS.html#acfb24070a8a6ed38ddef073c2ec64304">FirLMS::Filter</a></div><div class="ttdeci">double Filter(double dirtySample, double noiseSample) override</div><div class="ttdef"><b>Definition:</b> FirLMS.cpp:19</div></div>
 <div class="ttc" id="aclassFirLMS_html"><div class="ttname"><a href="classFirLMS.html">FirLMS</a></div><div class="ttdef"><b>Definition:</b> FirLMS.h:10</div></div>
 <div class="ttc" id="aclassFir1_html"><div class="ttname"><a href="classFir1.html">Fir1</a></div><div class="ttdef"><b>Definition:</b> Fir1.h:36</div></div>
+<div class="ttc" id="aclassSampleCallback_html"><div class="ttname"><a href="classSampleCallback.html">SampleCallback</a></div><div class="ttdef"><b>Definition:</b> SampleCallback.h:7</div></div>
 <div class="ttc" id="aclassNoiseFilter_html"><div class="ttname"><a href="classNoiseFilter.html">NoiseFilter</a></div><div class="ttdef"><b>Definition:</b> NoiseFilter.h:20</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

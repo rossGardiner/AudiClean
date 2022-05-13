@@ -1,8 +1,9 @@
 <map id="SampleLink" name="SampleLink">
-<area shape="rect" id="node1" title=" " alt="" coords="125,131,282,223"/>
-<area shape="rect" id="node3" href="$classNoiseFilter.html" title=" " alt="" coords="27,271,193,495"/>
-<area shape="rect" id="node6" href="$classSoxReader.html" title=" " alt="" coords="217,300,379,465"/>
-<area shape="rect" id="node2" href="$classSampleCallback.html" title=" " alt="" coords="140,5,267,83"/>
-<area shape="rect" id="node4" href="$classFirLMS.html" title=" " alt="" coords="5,543,95,635"/>
-<area shape="rect" id="node5" href="$classLinkDNF.html" title=" " alt="" coords="119,543,221,635"/>
+<area shape="rect" id="node1" title=" " alt="" coords="328,131,485,223"/>
+<area shape="rect" id="node3" href="$classNoiseFilter.html" title=" " alt="" coords="153,271,319,495"/>
+<area shape="rect" id="node6" href="$classPlotter.html" title=" " alt="" coords="343,322,470,443"/>
+<area shape="rect" id="node7" href="$classSoxReader.html" title=" " alt="" coords="494,300,655,465"/>
+<area shape="rect" id="node2" href="$classSampleCallback.html" title=" " alt="" coords="343,5,470,83"/>
+<area shape="rect" id="node4" href="$classFirLMS.html" title=" " alt="" coords="5,550,221,657"/>
+<area shape="rect" id="node5" href="$classLinkDNF.html" title=" " alt="" coords="245,543,475,664"/>
 </map>
