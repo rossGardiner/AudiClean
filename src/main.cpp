@@ -76,6 +76,7 @@ int main(int argc, char ** argv) {
                 break;
             case 'D':
                 dnf = true;
+                lr = 1.0; //update to suit best dnf hyperparam
                 break;
             case 'q':
             case 'S':
