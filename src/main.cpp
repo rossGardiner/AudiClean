@@ -17,7 +17,7 @@
 
 
 static void prt_usage(char * exe) {
-    fprintf(stderr, "Usage: %s [-D] [-l<lrate>] [-T<ntaps>] [-p] [<sox global options>] [<sox input options>]\n", exe);
+    fprintf(stderr, "Usage: %s [-D] [-l<lrate>] [-T<ntaps>] [-x] [<sox global options>] [<sox input options>]\n", exe);
     fprintf(stderr, "\t<input file> [<sox noiseref options>] <noise file> [sox output options] <output file>\n\n");
 }
 
@@ -43,9 +43,6 @@ int main(int argc, char ** argv) {
             paths[pcnt++] = argv[i];
         } else switch(argv[i][1]) {
             case '\0':
-            case 'p':
-                plot = true;
-                break;
             case 'd':
             case 'n':
                 if(pcnt > 2) goto error;
@@ -54,7 +51,7 @@ int main(int argc, char ** argv) {
             case 'h':
                 prt_usage(argv[0]);
                 fprintf(stderr, "The -D option causes a DNF filter rather than a single-layer LMS filter to be used.\n");
-                fprintf(stderr, "The -p option plots filter signals in dynamic pop-up windows.\n");
+                fprintf(stderr, "The -x option plots filter signals in dynamic pop-up windows.\n");
                 fprintf(stderr, "The -l and -T options control the filter parameters.\n");
                 fprintf(stderr, "Standard 'sox' options may be used directly in their short form. File options will\n");
                 fprintf(stderr, "apply to the following input file, just as they would in a normal sox invocation.\n");
@@ -134,6 +131,8 @@ int main(int argc, char ** argv) {
             case 'L':
             case 'B':
             case 'x':
+                plot = true;
+                break;
             case 'N':
             case 'X':
             case 's':
