@@ -34,10 +34,6 @@ cmake .
 make
 ```
 
-# Run 
-
-To fill in, describe how SoX is used as an extension.
-
 # Documentation
 
 Check out the developer documentation hosted [here](https://rossgardiner.github.io/AudiClean/html/annotated.html).
