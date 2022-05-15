@@ -6,7 +6,9 @@
 #include "boost/circular_buffer.hpp"
 #include "cvui.h"
 #include "SampleLink.h"
-
+/*!
+ * A pipeline element which provides the facility to plot samples passing into it using a dynamic plot window. Refresh rate, window size and window name may be set using the constructor.
+ */
 class Plotter : public SampleLink{
 public:
     void NextSample(double next);

@@ -4,6 +4,10 @@
 #include <thread>
 #include <algorithm>
 
+/*!
+ * Callback function for Plotter. This will add the sample to an internal ring buffer, plot the sample on the internal cv::Mat and callback the next pipeline element with the sample
+ * @param next
+ */
 void Plotter::NextSample(double next){
     cb->push_back(next);
     if(cb->size() >= 2) {
@@ -22,10 +26,21 @@ void Plotter::NextSample(double next){
     
 }
 
+/*!
+ * Initialises the window, must be called before Show()
+ */
 void Plotter::Init() {
     cvui::init(window_name);
 }
 
+/*!
+ * Constructor for Plotter
+ * @param _winname the text window name for this dynamic plot
+ * @param _bsize the internal ring buffer size desired
+ * @param _w desired width of the window
+ * @param _h desired height of the window
+ * @param _framerate_fps desired refreshrate of the window (maxiumum)
+ */
 Plotter::Plotter(std::string _winname, int _bsize, int _w, int _h, double _framerate_fps){
     window_name = _winname;
     frame = cv::Mat(cv::Size(_w, _h), CV_8UC3);
@@ -36,6 +51,9 @@ Plotter::Plotter(std::string _winname, int _bsize, int _w, int _h, double _frame
     framerate_fps = _framerate_fps;
 }
 
+/*!
+ * Shows the latest version of the internal cv::Mat
+ */
 void Plotter::Show() {
     cv::imshow(window_name, frame);
 }
