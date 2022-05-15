@@ -6,8 +6,7 @@
 
 
 
-Inheritance diagram for Plotter\+:
-\nopagebreak
+Inheritance diagram for Plotter\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,8 +15,7 @@ Inheritance diagram for Plotter\+:
 \end{figure}
 
 
-Collaboration diagram for Plotter\+:
-\nopagebreak
+Collaboration diagram for Plotter\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -38,6 +36,9 @@ void \mbox{\hyperlink{classPlotter_af113de9179a98bd874e3625667ee0365}{Show}} ()
 \doxysubsection*{Additional Inherited Members}
 
 
+\doxysubsection{Detailed Description}
+A pipeline element which provides the facility to plot samples passing into it using a dynamic plot window. Refresh rate, window size and window name may be set using the constructor. 
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classPlotter_a256c8467db21f2f2f19117bdc7fc4006}\label{classPlotter_a256c8467db21f2f2f19117bdc7fc4006}} 
 \index{Plotter@{Plotter}!Plotter@{Plotter}}
@@ -45,6 +46,19 @@ void \mbox{\hyperlink{classPlotter_af113de9179a98bd874e3625667ee0365}{Show}} ()
 \doxysubsubsection{\texorpdfstring{Plotter()}{Plotter()}}
 {\footnotesize\ttfamily Plotter\+::\+Plotter (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+winname,  }\item[{int}]{\+\_\+bsize,  }\item[{int}]{\+\_\+w,  }\item[{int}]{\+\_\+h,  }\item[{double}]{\+\_\+framerate\+\_\+fps }\end{DoxyParamCaption})}
 
+Constructor for \mbox{\hyperlink{classPlotter}{Plotter}} 
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+winname} & the text window name for this dynamic plot \\
+\hline
+{\em \+\_\+bsize} & the internal ring buffer size desired \\
+\hline
+{\em \+\_\+w} & desired width of the window \\
+\hline
+{\em \+\_\+h} & desired height of the window \\
+\hline
+{\em \+\_\+framerate\+\_\+fps} & desired refreshrate of the window (maxiumum) \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
@@ -54,12 +68,17 @@ void \mbox{\hyperlink{classPlotter_af113de9179a98bd874e3625667ee0365}{Show}} ()
 \doxysubsubsection{\texorpdfstring{Init()}{Init()}}
 {\footnotesize\ttfamily void Plotter\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classPlotter_ace645e631b5ab1e4157ce938e8d6fba9}\label{classPlotter_ace645e631b5ab1e4157ce938e8d6fba9}} 
+Initialises the window, must be called before \mbox{\hyperlink{classPlotter_af113de9179a98bd874e3625667ee0365}{Show()}} \mbox{\Hypertarget{classPlotter_ace645e631b5ab1e4157ce938e8d6fba9}\label{classPlotter_ace645e631b5ab1e4157ce938e8d6fba9}} 
 \index{Plotter@{Plotter}!NextSample@{NextSample}}
 \index{NextSample@{NextSample}!Plotter@{Plotter}}
 \doxysubsubsection{\texorpdfstring{NextSample()}{NextSample()}}
 {\footnotesize\ttfamily void Plotter\+::\+Next\+Sample (\begin{DoxyParamCaption}\item[{double}]{next }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
+Callback function for \mbox{\hyperlink{classPlotter}{Plotter}}. This will add the sample to an internal ring buffer, plot the sample on the internal cv\+::\+Mat and callback the next pipeline element with the sample 
+\begin{DoxyParams}{Parameters}
+{\em next} & \\
+\hline
+\end{DoxyParams}
 
 
 Implements \mbox{\hyperlink{classSampleCallback_aab0827e638e5dba214cebb90e3eb9fa1}{Sample\+Callback}}.
@@ -70,7 +89,7 @@ Implements \mbox{\hyperlink{classSampleCallback_aab0827e638e5dba214cebb90e3eb9fa
 \doxysubsubsection{\texorpdfstring{Show()}{Show()}}
 {\footnotesize\ttfamily void Plotter\+::\+Show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-
+Shows the latest version of the internal cv\+::\+Mat 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

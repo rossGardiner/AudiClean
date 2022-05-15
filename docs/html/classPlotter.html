@@ -113,7 +113,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:aab5e41ba515a75d2cab815e3ceeb5e37 inherit pro_attribs_classSampleLink"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSampleCallback.html">SampleCallback</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSampleLink.html#aab5e41ba515a75d2cab815e3ceeb5e37">sampleCallback</a> = nullptr</td></tr>
 <tr class="separator:aab5e41ba515a75d2cab815e3ceeb5e37 inherit pro_attribs_classSampleLink"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A pipeline element which provides the facility to plot samples passing into it using a dynamic plot window. Refresh rate, window size and window name may be set using the constructor. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a256c8467db21f2f2f19117bdc7fc4006"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a256c8467db21f2f2f19117bdc7fc4006">&#9670;&nbsp;</a></span>Plotter()</h2>
 
@@ -157,6 +159,16 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Constructor for <a class="el" href="classPlotter.html">Plotter</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_winname</td><td>the text window name for this dynamic plot </td></tr>
+    <tr><td class="paramname">_bsize</td><td>the internal ring buffer size desired </td></tr>
+    <tr><td class="paramname">_w</td><td>desired width of the window </td></tr>
+    <tr><td class="paramname">_h</td><td>desired height of the window </td></tr>
+    <tr><td class="paramname">_framerate_fps</td><td>desired refreshrate of the window (maxiumum) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -175,6 +187,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Initialises the window, must be called before <a class="el" href="classPlotter.html#af113de9179a98bd874e3625667ee0365">Show()</a> </p>
 
 </div>
 </div>
@@ -201,6 +214,12 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Callback function for <a class="el" href="classPlotter.html">Plotter</a>. This will add the sample to an internal ring buffer, plot the sample on the internal cv::Mat and callback the next pipeline element with the sample </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">next</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="classSampleCallback.html#aab0827e638e5dba214cebb90e3eb9fa1">SampleCallback</a>.</p>
 
@@ -220,6 +239,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Shows the latest version of the internal cv::Mat </p>
 
 </div>
 </div>
